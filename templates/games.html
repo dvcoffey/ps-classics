@@ -1,16 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PS Classics</title>
-</head>
-<body>
+{% extends "base.html" %}
+{% block content %}
+
+    <h2>I'm extending the base tamplate</h2>
+
     {% for game in games %}
         {{ game.game_name }}<br>
         {{ game.genre_name }}<br>
         {{ game.year }}<br>
         {{ game.is_liked }}<br>
     {% endfor %}
-</body>
-</html>
+
+{% endblock %}
