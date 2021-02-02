@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PS Classics</title>
+</head>
+<body>
+    {% for game in games %}
+        {{ game.game_name }}<br>
+        {{ game.genre_name }}<br>
+        {{ game.year }}<br>
+        {{ game.is_liked }}<br>
+    {% endfor %}
+</body>
+</html>
