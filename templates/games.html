@@ -1,13 +1,28 @@
 {% extends "base.html" %}
 {% block content %}
-
-    <h2>I'm extending the base tamplate</h2>
-
-    {% for game in games %}
-        {{ game.game_name }}<br>
-        {{ game.genre_name }}<br>
-        {{ game.year }}<br>
-        {{ game.is_liked }}<br>
-    {% endfor %}
+    <div class="row">
+        {% for game in games %}
+            <div class="col s12 m6 l4">
+                <div class="card">
+                    <div class="card-image">
+                        {% if game.img_url %}
+                        <img src="{{ game.img_url }}">
+                        {% else %}
+                        <img src="{{ url_for('static', filename='images/ps-logo.png') }}">
+                        {% endif %}
+                        <span class="card-title game-card-title">{{ game.game_name }}</span>
+                    </div>
+                    <div class="card-content">
+                        <p>{{ game.genre_name }}<br>
+                            {{ game.year }}<br>
+                            {{ game.is_liked }}<br></p>
+                    </div>
+                    <div class="card-action">
+                        <a href="#">Read about {{ game.game_name }}</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+   </div>
 
 {% endblock %}
