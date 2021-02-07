@@ -121,8 +121,21 @@ def add_game():
 
 @app.route("/edit_game/<game_id>", methods=["GET", "POST"])
 def edit_game(game_id):
-    game = mongo.db.games.find_one({"_id": ObjectId(game_id)})
+    if request.method == "POST":
+        edit = {
+            "game_name": request.form.get("game_name"),
+            "img_url": request.form.get("img_url"),
+            "genre_name": request.form.get("genre_name"),
+            "year": request.form.get("year"),
+            "developer": request.form.get("developer"),
+            "publisher": request.form.get("publisher"),
+            "description": request.form.get("description"),
+            "added_by": session["user"],
+        }
+        mongo.db.games.update({"_id": ObjectId(game_id)}, edit)
+        flash("Game Edited")
 
+    game = mongo.db.games.find_one({"_id": ObjectId(game_id)})
     genres = mongo.db.genres.find().sort("genre_name", 1)
     return render_template("edit_game.html", game=game, genres=genres)
 

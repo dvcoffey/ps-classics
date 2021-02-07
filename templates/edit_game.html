@@ -3,7 +3,7 @@
 
     <div class="row card-panel grey lighten-5">
         <h3 class="light-blue-text text-darken-4 center-align">Edit Game</h3>
-        <form class="col s12" method="POST" action="{{ url_for('edit_game', game_id=game.id) }}">
+        <form class="col s12" method="POST" action="{{ url_for('edit_game', game_id=game._id) }}">
             <!-- game title -->
             <div class="row">
                 <div class="input-field col s12">
