@@ -8,7 +8,7 @@
             <div class="row">
                 <div class="input-field col s12">
                     <i class="fas fa-pencil-alt prefix blue-text text-darken-4"></i>
-                    <input id="game_name" name="game_name" type="text" class="validate" required>
+                    <input id="game_name" name="game_name" value="{{ game.game_name }}" type="text" class="validate" required>
                     <label for="game_name">Game Title</label>
                 </div>
             </div>
@@ -16,7 +16,7 @@
             <div class="row">
                 <div class="input-field col s12">
                     <i class="fas fa-link prefix blue-text text-darken-4"></i>
-                    <input id="img_url" name="img_url" type="text" class="validate">
+                    <input id="img_url" name="img_url" value="{{ game.img_url }}" type="text" class="validate">
                     <label for="img_url">Image URL</label>
                 </div>
             </div>
@@ -25,9 +25,13 @@
 				<div class="input-field col s12">
                     <i class="fas fa-folder-open prefix light-blue-text text-darken-4"></i>
 					<select id="genre_name" name="genre_name" class="validate" required>
-                        <option value="" disabled selected>Choose Genre</option>
+                        <option value="" disabled>Choose Genre</option>
                         {% for genre in genres %}
-                            <option value="{{ genre.genre_name }}">{{ genre.genre_name }}</option>
+                            {% if genre.genre_name == game.genre_name %}
+                                <option value="{{ genre.genre_name }}" selected>{{ genre.genre_name }}</option>
+                            {% else %}
+                                <option value="{{ genre.genre_name }}">{{ genre.genre_name }}</option>
+                            {% endif %}
                         {% endfor %}
                     </select>
 					<label for="genre_name">Genre</label>
@@ -37,7 +41,7 @@
             <div class="row">
                 <div class="input-field col s12">
                     <i class="fas fa-calendar-day prefix blue-text text-darken-4"></i>
-                    <input id="year" name="year" type="text" class="datepicker validate" required>
+                    <input id="year" name="year" type="text" value="{{ game.year }}" class="datepicker validate" required>
                     <label for="year">Release Date</label>
                 </div>
             </div>
@@ -45,7 +49,7 @@
             <div class="row">
                 <div class="input-field col s12">
                     <i class="fas fa-pencil-alt prefix blue-text text-darken-4"></i>
-                    <input id="developer" name="developer" type="text" class="validate" required>
+                    <input id="developer" name="developer" value="{{ game.developer }}" type="text" class="validate" required>
                     <label for="developer">Developer</label>
                 </div>
             </div>
@@ -53,7 +57,7 @@
             <div class="row">
                 <div class="input-field col s12">
                     <i class="fas fa-pencil-alt prefix blue-text text-darken-4"></i>
-                    <input id="publisher" name="publisher" type="text" class="validate" required>
+                    <input id="publisher" name="publisher" value="{{ game.publisher }}" type="text" class="validate" required>
                     <label for="publisher">Publisher</label>
                 </div>
             </div>
@@ -61,13 +65,18 @@
             <div class="row">
                 <div class="input-field col s12">
                     <i class="fas fa-align-left prefix blue-text text-darken-4"></i>
-                    <textarea id="description" name="description" class="materialize-textarea"></textarea>
+                    <textarea id="description" name="description" class="materialize-textarea">
+                        {{- game.description -}}
+                    </textarea>
                     <label for="description">Game Description</label>
                 </div>
             </div>
             <!-- submit button -->
             <div class="row">
                 <div class="col s12 center-align">
+                    <a href="{{ url_for('get_games') }}" class="btn-large red">
+                        Cancel
+                    </a>
                     <button type="submit" class="btn-large blue darken-4">
                         Edit Game
                     </button>
