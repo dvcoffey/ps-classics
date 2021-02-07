@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <div class="row card-panel grey lighten-5">
+        <h3 class="light-blue-text text-darken-4 center-align">Edit Game</h3>
+        <form class="col s12" method="POST" action="{{ url_for('edit_game', game_id=game.id) }}">
+            <!-- game title -->
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="fas fa-pencil-alt prefix blue-text text-darken-4"></i>
+                    <input id="game_name" name="game_name" type="text" class="validate" required>
+                    <label for="game_name">Game Title</label>
+                </div>
+            </div>
+            <!-- image url -->
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="fas fa-link prefix blue-text text-darken-4"></i>
+                    <input id="img_url" name="img_url" type="text" class="validate">
+                    <label for="img_url">Image URL</label>
+                </div>
+            </div>
+            <!-- genre -->
+            <div class="row">
+				<div class="input-field col s12">
+                    <i class="fas fa-folder-open prefix light-blue-text text-darken-4"></i>
+					<select id="genre_name" name="genre_name" class="validate" required>
+                        <option value="" disabled selected>Choose Genre</option>
+                        {% for genre in genres %}
+                            <option value="{{ genre.genre_name }}">{{ genre.genre_name }}</option>
+                        {% endfor %}
+                    </select>
+					<label for="genre_name">Genre</label>
+				</div>
+			</div>
+            <!-- release date -->
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="fas fa-calendar-day prefix blue-text text-darken-4"></i>
+                    <input id="year" name="year" type="text" class="datepicker validate" required>
+                    <label for="year">Release Date</label>
+                </div>
+            </div>
+            <!-- developer -->
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="fas fa-pencil-alt prefix blue-text text-darken-4"></i>
+                    <input id="developer" name="developer" type="text" class="validate" required>
+                    <label for="developer">Developer</label>
+                </div>
+            </div>
+            <!-- publisher -->
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="fas fa-pencil-alt prefix blue-text text-darken-4"></i>
+                    <input id="publisher" name="publisher" type="text" class="validate" required>
+                    <label for="publisher">Publisher</label>
+                </div>
+            </div>
+            <!-- game description -->
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="fas fa-align-left prefix blue-text text-darken-4"></i>
+                    <textarea id="description" name="description" class="materialize-textarea"></textarea>
+                    <label for="description">Game Description</label>
+                </div>
+            </div>
+            <!-- submit button -->
+            <div class="row">
+                <div class="col s12 center-align">
+                    <button type="submit" class="btn-large blue darken-4">
+                        Edit Game
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+{% endblock %}
