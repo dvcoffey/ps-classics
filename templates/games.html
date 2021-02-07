@@ -6,16 +6,20 @@
                 <div class="card">
                     <div class="card-image">
                         {% if game.img_url %}
-                        <img src="{{ game.img_url }}">
-                        {% else %}
-                        <img src="{{ url_for('static', filename='images/ps-logo.png') }}">
+                            <img src="{{ game.img_url }}">
+                            {% else %}
+                            <img src="{{ url_for('static', filename='images/ps-logo.png') }}">
                         {% endif %}
-                        <span class="card-title game-card-title">{{ game.game_name }}</span>
                     </div>
+                    <span class="card-title blue darken-4 valign-wrapper white-text center-align">{{ game.game_name }}</span>
                     <div class="card-content">
-                        <p>{{ game.genre_name }}<br>
-                            {{ game.year }}<br>
-                            {{ game.is_liked }}<br></p>
+                        <p>
+                            Genre: {{ game.genre_name }}<br>
+                            Released: {{ game.year }}<br>
+                            Developed by: {{ game.developer }}<br>
+                            Published by: {{ game.publisher }}<br>
+                            Added by: {{ game.added_by}}
+                        </p>
                     </div>
                     <div class="card-action">
                         <a href="#">Read about {{ game.game_name }}</a>
