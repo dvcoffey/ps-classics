@@ -18,6 +18,7 @@
                                 Released: {{ game.year }}<br>
                                 Developed by: {{ game.developer }}<br>
                                 Published by: {{ game.publisher }}<br>
+                                Description: {{ game.description }}<br>
                                 <em>Added by: {{ game.added_by}}</em>
                             </p>
                         </div>
@@ -26,7 +27,6 @@
                                 <div class="col s12 l4">
                                     <a href="#">Read more</a>
                                 </div>
-                                <a href="https://www.amazon.com/s?k=ps1+{{ game.game_name}}" target="_blank" rel="noopener noreferrer">buy</a>
                                 <div class="s12 l8">
                                     {% if session.user|lower == game.added_by|lower %}
                                         <a href="{{ url_for('edit_game', game_id=game._id ) }}" class="btn-small green accent-4">
