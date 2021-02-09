@@ -1,4 +1,24 @@
 {% extends "base.html" %}
 {% block content %}
 
+<h3>Search Games</h3>
+
+<div class="row card-panel gray lighten-5">
+    <form action="{{ url_for('search') }}" method="POST" class="col s12">
+        <div class="row valign-wrapper center-align">
+            <div class="input-field col s12 m8">
+                <i class="fas fa-search prefix blue left"></i>
+                <input type="text" name="query" id="query" minlength="2" class="validate" required>
+                <label for="query">Search Games</label>
+            </div>
+            <div class="col s12 m4">
+                <a href="{{ url_for('get_index') }}" class="red btn">Reset</a>
+                <button type="submit" class="blue large">
+                    <i class="fas fa-search right"></i>Search
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+
 {% endblock %}

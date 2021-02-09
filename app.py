@@ -25,6 +25,13 @@ def get_index():
     return render_template("index.html", games=games)
 
 
+@app.route("/search", methods=["GET", "POST"])
+def search():
+    query = request.form.get("query")
+    games = mongo.db.games.find(({"$text": {"$search": query}}))
+    return render_template("games.html", games=games)
+
+
 @app.route("/get_games")
 def get_games():
     games = mongo.db.games.find()
