@@ -15,7 +15,7 @@
             <div class="collapsible-header"><i class="material-icons"></i>{{ genre.genre_name }}</div>
             <div class="collapsible-body">
                 <a href="{{ url_for('edit_genre', genre_id=genre._id) }}" class="btn green">Edit</a>
-                <a href="" class="btn red">Delete</a>
+                <a href="{{ url_for('delete_genre', genre_id=genre._id) }}" class="btn red">Delete</a>
             </div>
             </li>
         </ul>
