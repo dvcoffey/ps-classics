@@ -29,3 +29,12 @@ html{background-color: rgb(60, 60, 60);}
     height: 650px;
     
 }
+
+.hero_image_container{
+    background-image: linear-gradient(to right, blue , grey);
+}
+
+#hero_image{
+    width: 60%;
+    margin-left: 20%;
+}
