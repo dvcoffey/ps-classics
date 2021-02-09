@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+    {% for genre in genres %}
+
+    <ul class="collapsible">
+        <li>
+        <div class="collapsible-header"><i class="material-icons"></i>{{ genre.genre_name }}</div>
+        <div class="collapsible-body">
+            <a href="" class="btn green">Edit</a>
+            <a href="" class="btn red">Delete</a>
+        </div>
+        </li>
+    </ul>
+    
+    {% endfor %}
+
+{% endblock %}

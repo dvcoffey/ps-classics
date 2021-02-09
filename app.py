@@ -19,6 +19,12 @@ mongo = PyMongo(app)
 
 
 @app.route("/")
+@app.route("/get_index")
+def get_index():
+    games = mongo.db.games.find()
+    return render_template("index.html", games=games)
+
+
 @app.route("/get_games")
 def get_games():
     games = mongo.db.games.find()
@@ -145,6 +151,12 @@ def delete_game(game_id):
     mongo.db.games.remove({"_id": ObjectId(game_id)})
     flash("Game Removed Sucessfully")
     return redirect(url_for("get_games"))
+
+
+@app.route("/get_genres")
+def get_genres():
+    genres = list(mongo.db.genres.find().sort("genre_name", 1))
+    return render_template("genres.html", genres=genres)
 
 
 if __name__ == "__main__":
