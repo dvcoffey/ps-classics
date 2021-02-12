@@ -23,7 +23,8 @@ mongo = PyMongo(app)
 @app.route("/get_index")
 def get_index():
     recents = list(mongo.db.games.find().sort("time_stamp", -1).limit(3))
-    return render_template("index.html", recents=recents)
+    views = list(mongo.db.games.find().sort("page_views", -1).limit(3))
+    return render_template("index.html", recents=recents, views=views)
 
 
 @app.route("/search", methods=["GET", "POST"])
@@ -170,6 +171,8 @@ def delete_game(game_id):
 @app.route("/read_more/<game_id>")
 def read_more(game_id):
     game = mongo.db.games.find_one({"_id": ObjectId(game_id)})
+    mongo.db.games.update(
+        {"_id": ObjectId(game_id)}, {'$inc': {'page_views': +1}})
     return render_template("read_more.html", game=game)
 
 
