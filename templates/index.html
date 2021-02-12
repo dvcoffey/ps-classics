@@ -1,18 +1,38 @@
 {% extends "base.html" %}
 {% block content %}
-<div class="hero_image_container">
-            <img src="static/images/ps_header_image.png" id="hero_image" alt="Playstation Console Image">
-        </div>
+    
+    <div class="hero-image-container">
+        <img src="static/images/ps_header_image.png" id="hero-image" alt="Playstation Console Image">
+    </div>
 
+  
+        <div class="container"> 
+            <h3>Recently Added</h3>  
+            <div class="row">
+                {% for game in recents %}
+                    <div class="col s12 m6 l4">
+                        <div class="card game-card">
+                            <a href="{{ url_for('read_more', game_id=game._id) }}">
+                                <div class="card-image">
+                                    {% if game.img_url %}
+                                        <img src="{{ game.img_url }}">
+                                    {% else %}
+                                        <img src="{{ url_for('static', filename='images/ps-logo.png') }}">
+                                    {% endif %}
+                                </div>
+                                <span class="card-title blue darken-4 valign-wrapper white-text">{{ game.game_name }}</span>
+                            </a> 
+                            
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div> 
 
-
-   
     {% for genre in genres %}
-        <a class="card text-shadow" href="{{ url_for('get_genres', genre_name=genre.genre_name) }}">
+        <a class="card text-shadow" href="{{ url_for('filter_genre', genre_name=genre.genre_name) }}">
         <p>{{ genre.genre_name }}</p>
         </a>
     {% endfor %}
  
-
-
 {% endblock %}

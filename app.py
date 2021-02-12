@@ -3,6 +3,7 @@ from flask import (
     Flask, flash, render_template,
     redirect, request, session, url_for)
 from flask_pymongo import PyMongo
+from datetime import datetime
 from bson.objectid import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash
 if os.path.exists("env.py"):
@@ -21,9 +22,8 @@ mongo = PyMongo(app)
 @app.route("/")
 @app.route("/get_index")
 def get_index():
-    genres = list(mongo.db.genres.find().sort("genre_name", 1))
-    games = mongo.db.games.find()
-    return render_template("index.html", games=games, genres=genres)
+    recents = list(mongo.db.games.find().sort("time_stamp", -1).limit(3))
+    return render_template("index.html", recents=recents)
 
 
 @app.route("/search", methods=["GET", "POST"])
@@ -119,6 +119,7 @@ def logout():
 @app.route("/add_game", methods=["GET", "POST"])
 def add_game():
     if request.method == "POST":
+        time_stamp = str(datetime.now())
         game = {
             "game_name": request.form.get("game_name"),
             "img_url": request.form.get("img_url"),
@@ -128,6 +129,7 @@ def add_game():
             "publisher": request.form.get("publisher"),
             "description": request.form.get("description"),
             "added_by": session["user"],
+            "time_stamp": time_stamp
         }
         mongo.db.games.insert_one(game)
         flash("Game Added To Database")
@@ -163,7 +165,6 @@ def delete_game(game_id):
     mongo.db.games.remove({"_id": ObjectId(game_id)})
     flash("Game Removed Sucessfully")
     return redirect(url_for("get_games"))
-
 
 
 @app.route("/read_more/<game_id>")
@@ -210,6 +211,12 @@ def delete_genre(genre_id):
     mongo.db.genres.remove({"_id": ObjectId(genre_id)})
     flash("Genre Deleted")
     return redirect(url_for("get_genres"))
+
+
+@app.route("/filter_genre/<genre_name>", methods=["GET", "POST"])
+def filter_genre(genre_name):
+    games = list(mongo.db.games.find({"genre_name": genre_name}))
+    return render_template("games.html", games=games)
 
 
 if __name__ == "__main__":

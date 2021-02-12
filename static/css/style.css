@@ -14,11 +14,12 @@ html{background-color: rgb(60, 60, 60);}
 
 /*---index.html---*/
 
-.hero_image_container{
+.hero-image-container{
     background-image: linear-gradient(to right, blue , grey);
+    min-width: 100%;
 }
 
-#hero_image{
+#hero-image{
     width: 60%;
     margin-left: 20%;
 }
@@ -30,11 +31,13 @@ html{background-color: rgb(60, 60, 60);}
 /*---games.html---*/
 
 .container {
-  margin: 5%;
-  width: 90%;
+  margin: 4% 7%;
+  width: 86%;
 }
 
 .search-bar{
+    width: 80%;
+    margin: 4% 10%;
     border-radius: 20px;
 }
 
