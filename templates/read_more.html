@@ -1,46 +1,23 @@
 {% extends "base.html" %}
 {% block content %}
-        <div class="row">
-            {% for game in games %}
-                <div class="col s12 m6 l4">
-                    <div class="card">
+    <div class="card game-card">
+                    <a href="{{ url_for('read_more', game_id=game._id) }}">
                         <div class="card-image">
                             {% if game.img_url %}
                                 <img src="{{ game.img_url }}">
-                                {% else %}
+                            {% else %}
                                 <img src="{{ url_for('static', filename='images/ps-logo.png') }}">
                             {% endif %}
                         </div>
-                        <span class="card-title blue darken-4 valign-wrapper white-text center-align">{{ game.game_name }}</span>
-                        <div class="card-content">
-                            <p>
-                                Genre: {{ game.genre_name }}<br>
-                                Released: {{ game.year }}<br>
-                                Developed by: {{ game.developer }}<br>
-                                Published by: {{ game.publisher }}<br>
-                                Description: {{ game.description }}<br>
-                                <em>Added by: {{ game.added_by}}</em>
-                            </p>
-                        </div>
-                        <div class="card-action">
-                            <div class="row">
-                                <div class="col s12 l4">
-                                    <a href="#">Read more</a>
-                                </div>
-                                <div class="s12 l8">
-                                    {% if session.user|lower == game.added_by|lower %}
-                                        <a href="{{ url_for('edit_game', game_id=game._id ) }}" class="btn-small green accent-4">
-                                            Edit
-                                        </a>
-                                        <a href="{{ url_for('delete_game', game_id=game._id ) }}" class="btn-small red accent-4">
-                                            Delete
-                                        </a>
-                                    {% endif %}
-                                </div>
-                            </div>
-                        </div>
+                        <span class="card-title blue darken-4 valign-wrapper white-text">{{ game.game_name }}</span>
+                    </a> 
+                    <div class="card-content">
+                        <p>
+                            <b>Genre:</b> {{ game.genre_name }}<br>
+                            <b>Released:</b> {{ game.year }}<br>
+                            <b>Developed by:</b> {{ game.developer }}<br>
+                            <b>Published by:</b> {{ game.publisher }}<br>
+                            <em><b>Added by:</b> {{ game.added_by}}</em>
+                        </p>
                     </div>
-                </div>
-            {% endfor %}
-        </div>
 {% endblock %}

@@ -1,25 +1,18 @@
 {% extends "base.html" %}
 {% block content %}
-
-
-
-<div class="row card-panel gray lighten-5">
-    <h3>Search Games</h3>
-    <form action="{{ url_for('search') }}" method="POST" class="col s12">
-        <div class="row valign-wrapper center-align">
-            <div class="input-field col s12 m7">
-                <i class="fas fa-search prefix blue-text left"></i>
-                <input type="text" name="query" id="query" minlength="2" class="validate" required>
-                <label for="query">Search Games</label>
-            </div>
-            <div class="col s12 m5">
-                <a href="{{ url_for('get_index') }}" class="red btn">Reset</a>
-                <button type="submit" class="btn blue">
-                    <i class="fas fa-search right"></i>Search
-                </button>
-            </div>
+<div class="hero_image_container">
+            <img src="static/images/ps_header_image.png" id="hero_image" alt="Playstation Console Image">
         </div>
-    </form>
-</div>
+
+
+
+   
+    {% for genre in genres %}
+        <a class="card text-shadow" href="{{ url_for('get_genres', genre_name=genre.genre_name) }}">
+        <p>{{ genre.genre_name }}</p>
+        </a>
+    {% endfor %}
+ 
+
 
 {% endblock %}

@@ -1,3 +1,7 @@
+/*---Fonts---*/
+
+/*---general---*/
+
 html{background-color: rgb(60, 60, 60);}
 
 .text-shadow {
@@ -8,27 +12,7 @@ html{background-color: rgb(60, 60, 60);}
     line-height: 2;
 }
 
-.container {
-  margin: 5%;
-  width: 90%;
-}
-@media only screen and (min-width: 601px) {
-  .container {
-    margin: 8%;
-    width: 84%;
-  }
-}
-@media only screen and (min-width: 993px) {
-  .container {
-      margin:10%;
-    width: 80%;
-  }
-}
-
-.card{
-    height: 650px;
-    
-}
+/*---index.html---*/
 
 .hero_image_container{
     background-image: linear-gradient(to right, blue , grey);
@@ -38,3 +22,35 @@ html{background-color: rgb(60, 60, 60);}
     width: 60%;
     margin-left: 20%;
 }
+
+.card-title{
+    padding-left: 20px;
+}
+
+/*---games.html---*/
+
+.container {
+  margin: 5%;
+  width: 90%;
+}
+
+.search-bar{
+    border-radius: 20px;
+}
+
+.game-card{
+    height: 800px;
+}
+
+@media only screen and (min-width: 601px) {
+    .game-card{
+    height: 700px;
+}
+}
+
+@media only screen and (min-width: 993px) {
+    .game-card{
+    height: 650px;
+}
+}
+

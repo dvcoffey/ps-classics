@@ -21,8 +21,9 @@ mongo = PyMongo(app)
 @app.route("/")
 @app.route("/get_index")
 def get_index():
+    genres = list(mongo.db.genres.find().sort("genre_name", 1))
     games = mongo.db.games.find()
-    return render_template("index.html", games=games)
+    return render_template("index.html", games=games, genres=genres)
 
 
 @app.route("/search", methods=["GET", "POST"])
@@ -34,7 +35,11 @@ def search():
 
 @app.route("/get_games")
 def get_games():
-    games = mongo.db.games.find()
+    query = request.args.get("query")
+    if query:
+        games = mongo.db.games.find(({"$text": {"$search": query}}))
+    else:
+        games = mongo.db.games.find()
     return render_template("games.html", games=games)
 
 
@@ -158,6 +163,13 @@ def delete_game(game_id):
     mongo.db.games.remove({"_id": ObjectId(game_id)})
     flash("Game Removed Sucessfully")
     return redirect(url_for("get_games"))
+
+
+
+@app.route("/read_more/<game_id>")
+def read_more(game_id):
+    game = mongo.db.games.find_one({"_id": ObjectId(game_id)})
+    return render_template("read_more.html", game=game)
 
 
 @app.route("/get_genres")
