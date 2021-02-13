@@ -1,34 +1,35 @@
 {% extends "base.html" %}
 {% block content %}
 
+
     <div class="row">
         <div class="col s12 center-align">
             <a href="{{ url_for('add_genre') }}" class="btn-large add-genre-btn blue darken-4">
-                Add Genre
+                <h4 class="add-genre-text">Add Genre</h4>
             </a>
         </div>
     </div>
 
-    <div class="container">
-        <div class="row">
-            <h4 class="category-title">Current</h4>
-            <!--retrieve games with genre--> 
-            {% for genre in genres %}
-                <div class="col s6 m4 l3">
-                    <a href="{{ url_for('filter_genre', genre_name=genre.genre_name) }}">
-                        <div class="card genre-thumbnail grey darken-4">
-                            <div class="card-content white-text">
-                                <span class="card-title center-align">{{ genre.genre_name }}</span>
-                            </div>
-                            <div class="card-action center-align">
-                                <a href="{{ url_for('edit_genre', genre_id=genre._id) }}" class="btn card-btn blue darken-4">Edit</a>
-                                <a href="{{ url_for('delete_genre', genre_id=genre._id) }}" class="btn card-btn red darken-4">Delete</a>
-                            </div>
+    <h4 class="catagory-title">Current</h4>
+
+    <div class="row">
+        <!--retrieve games with genre--> 
+        {% for genre in genres %}
+            <div class="col s6 m4 l3">
+                <a href="{{ url_for('filter_genre', genre_name=genre.genre_name) }}">
+                    <div class="genre-container grey darken-4">
+                        <div class=" white-text col s12">
+                            <span class="center-align">{{ genre.genre_name }}</span>
                         </div>
-                    </a>
-                </div>
-            {% endfor %}
-        </div>
+                        <div class="col s12">
+                            <a href="{{ url_for('edit_genre', genre_id=genre._id) }}" class="btn">Edit</a>
+                            <a href="{{ url_for('delete_genre', genre_id=genre._id) }}" class="btn">Delete</a>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        {% endfor %}
     </div>
+   
 
 {% endblock %}

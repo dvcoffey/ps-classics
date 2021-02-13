@@ -13,7 +13,7 @@
             <!--list games by recently added-->
             {% for game in recents %}
                 <div class="col s12 m6 l3">
-                    <div class="game-thumbnail">
+                    <div class="card game-thumbnail">
                         <a href="{{ url_for('details', game_id=game._id) }}">
                             <div class="card-image thumbnail-image">
                                 {% if game.img_url %}
