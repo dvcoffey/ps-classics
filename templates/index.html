@@ -17,7 +17,7 @@
                         <a href="{{ url_for('details', game_id=game._id) }}">
                             <div class="card-image thumbnail-image">
                                 {% if game.img_url %}
-                                    <img src="{{ game.img_url }}">
+                                    <img src="{{ game.img_url }}" onerror="this.onerror=null; this.src='../static/images/ps-logo.png'">
                                 {% else %}
                                     <img src="{{ url_for('static', filename='images/ps-logo.png') }}">
                                 {% endif %}
@@ -41,7 +41,7 @@
                         <a href="{{ url_for('details', game_id=game._id) }}">
                             <div class="card-image thumbnail-image">
                                 {% if game.img_url %}
-                                    <img src="{{ game.img_url }}">
+                                    <img src="{{ game.img_url }}" onerror="this.onerror=null; this.src='../static/images/ps-logo.png'">
                                 {% else %}
                                     <img src="{{ url_for('static', filename='images/ps-logo.png') }}">
                                 {% endif %}

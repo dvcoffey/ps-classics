@@ -157,7 +157,7 @@ footer{
 }
 
 .game-card{
-    height: 600px;
+    height: 610px;
     position: relative;
 }
 
@@ -197,6 +197,8 @@ footer{
 .card-button{
     display: flex;
     justify-content: center;
+    padding: 2px auto;
+    line-height: 30px;
 }
 
 .search-bar{

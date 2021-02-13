@@ -30,7 +30,7 @@
                         <a href="{{ url_for('details', game_id=game._id) }}">
                             <div class="card-image game-card-image">
                                 {% if game.img_url %}
-                                    <img src="{{ game.img_url }}">
+                                    <img src="{{ game.img_url }}" onerror="this.onerror=null; this.src='../static/images/ps-logo.png'">
                                 {% else %}
                                     <img src="{{ url_for('static', filename='images/ps-logo.png') }}">
                                 {% endif %}
@@ -50,7 +50,7 @@
                             <div class="row button-container">
                                 <div class="col s12 card-button">
                                     <a href="https://www.amazon.com/s?k=ps1+{{ game.game_name}}"
-                                        target="_blank" class="btn yellow darken-6 accent-4">Search Amazon</a>    
+                                        target="_blank" class="btn yellow grey-text accent-4">Search on Amazon</a>    
                                 </div>
                             </div>
                         </div>
