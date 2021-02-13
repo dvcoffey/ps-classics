@@ -3,7 +3,7 @@
     <!--Game Searchbar-->
     <div class="row card-panel search-bar grey lighten-5">
         <h4>Search Games</h4>
-        <form action="{{ url_for('get_games') }}" method="GET" class="col s12">
+        <form action="{{ url_for('games') }}" method="GET" class="col s12">
             <div class="row valign-wrapper center-align">
                 <div class="input-field col s12 m7">
                     <i class="fas fa-search prefix grey-text darken-4 left"></i>
@@ -11,7 +11,7 @@
                     <label for="query">Search Games</label>
                 </div>
                 <div class="col s12 m5">
-                    <a href="{{ url_for('get_games') }}" class="red darken-3 btn">Reset</a>
+                    <a href="{{ url_for('games') }}" class="red darken-3 btn">Reset</a>
                     <button type="submit" class="btn blue darken-3">
                         <i class="fas fa-search right"></i>Search
                     </button>
@@ -25,7 +25,7 @@
             {% for game in games %}
                 <div class="col s12 m6 l4">
                     <div class="card game-card">
-                        <a href="{{ url_for('read_more', game_id=game._id) }}">
+                        <a href="{{ url_for('details', game_id=game._id) }}">
                             <div class="card-image">
                                 {% if game.img_url %}
                                     <img src="{{ game.img_url }}">

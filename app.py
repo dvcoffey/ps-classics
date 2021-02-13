@@ -19,40 +19,38 @@ mongo = PyMongo(app)
 
 
 @app.route("/")
-@app.route("/get_index")
-def get_index():
-    '''List games sorted into different categories
-    and renders the homepage template'''
+@app.route("/index")
+def index():
     recents = list(mongo.db.games.find().sort("time_stamp", -1).limit(3))
     views = list(mongo.db.games.find().sort("page_views", -1).limit(3))
     genres = list(mongo.db.genres.find().sort("genre_name", 1))
     return render_template(
         "index.html", recents=recents, views=views, genres=genres)
 
-#game details
-@app.route("/read_more/<game_id>")
-def read_more(game_id):
-    '''Open game full details'''
+
+@app.route("/games")
+def games():
+    query = request.args.get("query")
+    if query:
+        games = mongo.db.games.find(({"$text": {"$search": query}}))
+    else:
+        games = mongo.db.games.find()
+    return render_template("games.html", games=games)
+
+
+@app.route("/details/<game_id>")
+def details(game_id):
+    '''Open game details'''
     game = mongo.db.games.find_one({"_id": ObjectId(game_id)})
     mongo.db.games.update(
         {"_id": ObjectId(game_id)}, {'$inc': {'page_views': +1}})
-    return render_template("read_more.html", game=game)
+    return render_template("game-details.html", game=game)
 
 
 @app.route("/search", methods=["GET", "POST"])
 def search():
     query = request.form.get("query")
     games = mongo.db.games.find(({"$text": {"$search": query}}))
-    return render_template("games.html", games=games)
-
-
-@app.route("/get_games")
-def get_games():
-    query = request.args.get("query")
-    if query:
-        games = mongo.db.games.find(({"$text": {"$search": query}}))
-    else:
-        games = mongo.db.games.find()
     return render_template("games.html", games=games)
 
 
@@ -120,7 +118,6 @@ def profile(username):
             {"added_by": session["user"]}).sort("time_stamp", -1))
         return render_template("profile.html", username=username, games=games)
 
-
     return redirect(url_for("login"))
 
 
@@ -149,10 +146,10 @@ def add_game():
         }
         mongo.db.games.insert_one(game)
         flash("Game Added To Database")
-        return redirect(url_for("get_games"))
+        return redirect(url_for("games"))
 
     genres = mongo.db.genres.find().sort("genre_name", 1)
-    return render_template("add_game.html", genres=genres)
+    return render_template("add-game.html", genres=genres)
 
 
 @app.route("/edit_game/<game_id>", methods=["GET", "POST"])
@@ -173,18 +170,18 @@ def edit_game(game_id):
 
     game = mongo.db.games.find_one({"_id": ObjectId(game_id)})
     genres = mongo.db.genres.find().sort("genre_name", 1)
-    return render_template("edit_game.html", game=game, genres=genres)
+    return render_template("edit-game.html", game=game, genres=genres)
 
 
 @app.route("/delete_game/<game_id>")
 def delete_game(game_id):
     mongo.db.games.remove({"_id": ObjectId(game_id)})
     flash("Game Removed Sucessfully")
-    return redirect(url_for("get_games"))
+    return redirect(url_for("games"))
 
 
-@app.route("/get_genres")
-def get_genres():
+@app.route("/genres")
+def genres():
     genres = list(mongo.db.genres.find().sort("genre_name", 1))
     return render_template("genres.html", genres=genres)
 
@@ -197,9 +194,9 @@ def add_genre():
         }
         mongo.db.genres.insert_one(genre)
         flash("Genre Added Succesfully")
-        return redirect(url_for("get_genres"))
+        return redirect(url_for("genres"))
 
-    return render_template("add_genre.html")
+    return render_template("add-genre.html")
 
 
 @app.route("/edit_genre/<genre_id>", methods=["GET", "POST"])
@@ -210,17 +207,17 @@ def edit_genre(genre_id):
         }
         mongo.db.genres.update({"_id": ObjectId(genre_id)}, edit)
         flash("Genre Successfully Updated")
-        return redirect(url_for("get_genres"))
+        return redirect(url_for("genres"))
 
     genre = mongo.db.genres.find_one({"_id": ObjectId(genre_id)})
-    return render_template("edit_genre.html", genre=genre)
+    return render_template("edit-genre.html", genre=genre)
 
 
 @app.route("/delete_genre/<genre_id>")
 def delete_genre(genre_id):
     mongo.db.genres.remove({"_id": ObjectId(genre_id)})
     flash("Genre Deleted")
-    return redirect(url_for("get_genres"))
+    return redirect(url_for("genres"))
 
 
 @app.route("/filter_genre/<genre_name>", methods=["GET", "POST"])

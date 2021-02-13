@@ -1,16 +1,15 @@
 {% extends "base.html" %}
 {% block content %}
     <div class="card game-card">
-                    <a href="{{ url_for('read_more', game_id=game._id) }}">
-                        <div class="card-image">
+                    
+                    <div class="card-image">
                             {% if game.img_url %}
                                 <img src="{{ game.img_url }}">
                             {% else %}
                                 <img src="{{ url_for('static', filename='images/ps-logo.png') }}">
                             {% endif %}
                         </div>
-                        <span class="card-title blue darken-4 valign-wrapper white-text">{{ game.game_name }}</span>
-                    </a> 
+                        <span class="card-title blue darken-4 valign-wrapper white-text">{{ game.game_name }}</span> 
                     <div class="card-content">
                         <p>
                             <b>Genre:</b> {{ game.genre_name }}<br>
