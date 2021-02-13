@@ -1,8 +1,12 @@
 $(document).ready(function(){
+    
+    //--activate materialise css components--//
     $('.sidenav').sidenav({edge: "right"});
     $(".collapsible").collapsible();
     $('select').formSelect();
     $('.datepicker').datepicker({
+        defaultDate: new Date(1994, 11, 3),
+        setDefaultDate: true,
         format: "dd mmmm, yyyy",
         yearRange: 50,
         showClearBtn: true,
@@ -11,6 +15,9 @@ $(document).ready(function(){
         }
     });
 
+
+    //--provided by code institute to alter the behavior of materialise css dropdown selector--//
+    //--removes the ability to select "choose genre" as an option --//
     validateMaterializeSelect();
     function validateMaterializeSelect() {
         let classValid = { "border-bottom": "1px solid #4caf50", "box-shadow": "0 1px 0 0 #4caf50" };
