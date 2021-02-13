@@ -5,13 +5,13 @@
     <div class="row card-panel search-bar">
         <h4 class="form-title">Search Games</h4>
         <form action="{{ url_for('games') }}" method="GET" class="col s12">
-            <div class="row valign-wrapper center-align">
-                <div class="input-field col s12 m7">
+            <div class="row center-align">
+                <div class="input-field col s12">
                     <i class="fas fa-search prefix grey-text darken-4 left"></i>
                     <input type="text" name="query" id="query" minlength="2" maxlength="32" class="validate" required>
                     <label for="query">Search Games</label>
                 </div>
-                <div class="col s12 m5">
+                <div class="col s12">
                     <a href="{{ url_for('games') }}" class="red darken-3 btn">Reset</a>
                     <button type="submit" class="btn blue darken-3">
                         <i class="fas fa-search right"></i>Search
@@ -26,7 +26,7 @@
         <div class="row">
             {% for game in games %}
                 <div class="col s12 m6 l4">
-                    <div class="card game-card">
+                    <div class="card game-card container">
                         <a href="{{ url_for('details', game_id=game._id) }}">
                             <div class="card-image game-card-image">
                                 {% if game.img_url %}
@@ -47,22 +47,22 @@
                             </p>
                         </div>
                         <div class="card-action">
-                            <div class="row">
+                            <div class="row button-container">
                                 {% if session.user|lower == game.added_by|lower %}
-                                    <div class="col s6 l4 card-button">
+                                    <div class="col s6 card-button">
                                         <a href="{{ url_for('edit_game', game_id=game._id ) }}" class="btn green accent-4">
                                             Edit
                                         </a>
                                         </div>
-                                    <div class="col s6 l4 card-button">
+                                    <div class="col s6 card-button">
                                         <a href="{{ url_for('delete_game', game_id=game._id ) }}" class="btn red accent-4">
                                             Delete
                                         </a>
                                     </div>
                                 {% endif %}
                             </div>
-                            <div class="row">
-                                <div class="col s12 l4 card-button">
+                            <div class="row button-container">
+                                <div class="col s12 card-button">
                                     <a href="https://www.amazon.com/s?k=ps1+{{ game.game_name}}"
                                         target="_blank" class="btn yellow darken-4 accent-4">Amazon</a>    
                                 </div>
