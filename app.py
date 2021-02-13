@@ -9,7 +9,6 @@ from werkzeug.security import generate_password_hash, check_password_hash
 if os.path.exists("env.py"):
     import env
 
-
 app = Flask(__name__)
 
 app.config["MONGO_DBNAME"] = os.environ.get("MONGO_DBNAME")
@@ -18,13 +17,28 @@ app.secret_key = os.environ.get("SECRET_KEY")
 
 mongo = PyMongo(app)
 
+#----Basic Functionality
 
+#homepage
 @app.route("/")
 @app.route("/get_index")
 def get_index():
+    '''List games sorted into different categories
+    and renders the homepage template'''
     recents = list(mongo.db.games.find().sort("time_stamp", -1).limit(3))
     views = list(mongo.db.games.find().sort("page_views", -1).limit(3))
-    return render_template("index.html", recents=recents, views=views)
+    genres = list(mongo.db.genres.find().sort("genre_name", 1))
+    return render_template(
+        "index.html", recents=recents, views=views, genres=genres)
+
+#game details
+@app.route("/read_more/<game_id>")
+def read_more(game_id):
+    '''Open game full details'''
+    game = mongo.db.games.find_one({"_id": ObjectId(game_id)})
+    mongo.db.games.update(
+        {"_id": ObjectId(game_id)}, {'$inc': {'page_views': +1}})
+    return render_template("read_more.html", game=game)
 
 
 @app.route("/search", methods=["GET", "POST"])
@@ -166,14 +180,6 @@ def delete_game(game_id):
     mongo.db.games.remove({"_id": ObjectId(game_id)})
     flash("Game Removed Sucessfully")
     return redirect(url_for("get_games"))
-
-
-@app.route("/read_more/<game_id>")
-def read_more(game_id):
-    game = mongo.db.games.find_one({"_id": ObjectId(game_id)})
-    mongo.db.games.update(
-        {"_id": ObjectId(game_id)}, {'$inc': {'page_views': +1}})
-    return render_template("read_more.html", game=game)
 
 
 @app.route("/get_genres")

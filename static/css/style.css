@@ -12,6 +12,9 @@ html{background-color: rgb(60, 60, 60);}
     line-height: 2;
 }
 
+.category-title{
+}
+
 /*---index.html---*/
 
 .hero-image-container{
@@ -24,11 +27,24 @@ html{background-color: rgb(60, 60, 60);}
     margin-left: 20%;
 }
 
-.card-title{
-    padding-left: 20px;
+.game-thumbnail{
+    
+}
+
+.thumbnail-image{
+    max-height: 100%;
+}
+
+.thumbnail-title{
+    width: 100%;
+    max-height: 50px;
 }
 
 /*---games.html---*/
+
+.card-game-title{
+    padding-left: 20px;
+}
 
 .container {
   margin: 4% 7%;
