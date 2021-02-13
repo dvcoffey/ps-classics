@@ -19,7 +19,7 @@
             <div class="nav-wrapper">
                 <a href="{{ url_for('index') }}" class="brand-logo">PS Classics</a>
                 <a href="#" data-target="mobile-demo" class="sidenav-trigger right"><i class="fas fa-bars"></i></a>
-                <ul class="right hide-on-med-and-down">
+                <ul class=" navbar right hide-on-med-and-down">
                     <li><a href="{{ url_for('index') }}">Home</a></li>
                     <li><a href="{{ url_for('games') }}">Games</a></li>
                     {% if session.user %}
@@ -38,8 +38,8 @@
         </nav>
 
         <!-- mobile sidenavbar -->
-        <ul class="sidenav" id="mobile-demo">
-            <li><h4 class="center-align light-blue-text text-darken-4">PS Classics</h4></li>
+        <ul class="navbar sidenav" id="mobile-demo">
+            <li><h4 class="center-align">PS Classics</h4></li>
             <li><a href="{{ url_for('index') }}">Home</a></li>
             <li><a href="{{ url_for('games') }}">Games</a></li>
             {% if session.user %}

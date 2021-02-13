@@ -8,10 +8,10 @@
 
     <!--recently added-->
     <div class="container">
-        <h3 class="category-title">Recently Added</h3>
+        <h4 class="category-title">Recently Added</h4>
         <div class="row">
             {% for game in recents %}
-                <div class="col s12 m6 l4">
+                <div class="col s12 m6 l3">
                     <div class="card game-thumbnail">
                         <a href="{{ url_for('details', game_id=game._id) }}">
                             <div class="card-image thumbnail-image">
@@ -20,8 +20,8 @@
                                 {% else %}
                                     <img src="{{ url_for('static', filename='images/ps-logo.png') }}">
                                 {% endif %}
-                                </div>
-                            <span class="card-title thumbnail-title">{{ game.game_name }}</span>
+                                <span class="card-title thumbnail-title">{{ game.game_name }}</span>
+                            </div>
                         </a>
                     </div>
                 </div> 
@@ -31,10 +31,10 @@
 
     <!--most viewed-->
     <div class="container"> 
-        <h3 class="category-title">Most Viewed</h3>  
+        <h4 class="category-title">Most Viewed</h4>  
         <div class="row">
             {% for game in views %}
-                <div class="col s12 m6 l4">
+                <div class="col s12 m6 l3">
                     <div class="card game-thumbnail">
                         <a href="{{ url_for('details', game_id=game._id) }}">
                             <div class="card-image thumbnail-image">
@@ -43,22 +43,22 @@
                                 {% else %}
                                     <img src="{{ url_for('static', filename='images/ps-logo.png') }}">
                                 {% endif %}
-                                </div>
-                            <span class="card-title thumbnail-title">{{ game.game_name }}</span>
-                        </a> 
+                                <span class="card-title thumbnail-title">{{ game.game_name }}</span>
+                            </div>
+                        </a>
                     </div>
-                </div>  
+                </div> 
             {% endfor %}
         </div>
     </div>
     <!--by genre-->
     <div class="container">
         <div class="row">
-            <h3 class="category-title">By Genre</h3> 
+            <h4 class="category-title">By Genre</h4> 
             {% for genre in genres %}
                 <div class="col s6 m4 l3">
                     <a href="{{ url_for('filter_genre', genre_name=genre.genre_name) }}">
-                        <div class="card genre-thumbnail blue-grey darken-1">
+                        <div class="card genre-thumbnail grey darken-4">
                             <div class="card-content white-text">
                                 <span class="card-title center-align">{{ genre.genre_name }}</span>
                             </div>

@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
-
+<div class="form-background">
     <div class="row card-panel grey lighten-5">
         <h3 class="light-blue-text text-darken-4 center-align">Add Game</h3>
         <form class="col s12" method="POST" action="{{ url_for('add_game') }}">
@@ -23,7 +23,7 @@
             <!-- genre -->
             <div class="row">
 				<div class="input-field col s12">
-                    <i class="fas fa-folder-open prefix light-blue-text text-darken-4"></i>
+                    <i class="fas fa-folder-open prefix blue-text text-darken-4"></i>
 					<select id="genre_name" name="genre_name" class="validate" required>
                         <option value="" disabled selected>Choose Genre</option>
                         {% for genre in genres %}
@@ -75,5 +75,5 @@
             </div>
         </form>
     </div>
-
+</div>
 {% endblock %}

@@ -21,8 +21,8 @@ mongo = PyMongo(app)
 @app.route("/")
 @app.route("/index")
 def index():
-    recents = list(mongo.db.games.find().sort("time_stamp", -1).limit(3))
-    views = list(mongo.db.games.find().sort("page_views", -1).limit(3))
+    recents = list(mongo.db.games.find().sort("time_stamp", -1).limit(6))
+    views = list(mongo.db.games.find().sort("page_views", -1).limit(6))
     genres = list(mongo.db.genres.find().sort("genre_name", 1))
     return render_template(
         "index.html", recents=recents, views=views, genres=genres)

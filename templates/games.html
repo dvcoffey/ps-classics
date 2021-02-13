@@ -1,8 +1,8 @@
 {% extends "base.html" %}
 {% block content %}
     <!--Game Searchbar-->
-    <div class="row card-panel search-bar grey lighten-5">
-        <h4>Search Games</h4>
+    <div class="row card-panel search-bar">
+        <h4 id="search-title">Search Games</h4>
         <form action="{{ url_for('games') }}" method="GET" class="col s12">
             <div class="row valign-wrapper center-align">
                 <div class="input-field col s12 m7">
@@ -26,14 +26,14 @@
                 <div class="col s12 m6 l4">
                     <div class="card game-card">
                         <a href="{{ url_for('details', game_id=game._id) }}">
-                            <div class="card-image">
+                            <div class="card-image game-card-image">
                                 {% if game.img_url %}
                                     <img src="{{ game.img_url }}">
                                 {% else %}
                                     <img src="{{ url_for('static', filename='images/ps-logo.png') }}">
                                 {% endif %}
                             </div>
-                            <span class="card-title card-game-title blue darken-4 valign-wrapper white-text">{{ game.game_name }}</span>
+                            <h6 class="card-title games-card-title">{{ game.game_name }}</h6>
                         </a> 
                         <div class="card-content">
                             <p>
@@ -46,20 +46,22 @@
                         </div>
                         <div class="card-action">
                             <div class="row">
-                                <div class="col s12 l4">
+                                <div class="col s12 l4 card-button">
                                     <a href="https://www.amazon.com/s?k=ps1+{{ game.game_name}}"
                                         target="_blank" rel="noopener noreferrer" class="btn-small yellow accent-4">Amazon</a>    
                                 </div>
-                                <div class="s12 l8">
-                                    {% if session.user|lower == game.added_by|lower %}
+                                {% if session.user|lower == game.added_by|lower %}
+                                    <div class="col s6 l4 card-button">
                                         <a href="{{ url_for('edit_game', game_id=game._id ) }}" class="btn-small green accent-4">
                                             Edit
                                         </a>
-                                            <a href="{{ url_for('delete_game', game_id=game._id ) }}" class="btn-small red accent-4">
+                                        </div>
+                                    <div class="col s6 l4 card-button">
+                                        <a href="{{ url_for('delete_game', game_id=game._id ) }}" class="btn-small red accent-4">
                                             Delete
                                         </a>
-                                    {% endif %}
-                                </div>
+                                    </div>
+                                {% endif %}
                             </div>
                         </div>
                     </div>

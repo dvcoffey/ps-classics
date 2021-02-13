@@ -1,8 +1,23 @@
 /*---Fonts---*/
 
-/*---general---*/
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&display=swap');
 
-html{background-color: rgb(60, 60, 60);}
+/*---general---*/
+html{
+    background-image: linear-gradient(to right, blue , grey);
+}
+
+.brand-logo{
+    font-family: "Orbitron", sans-serif;
+    font-weight: 600;
+    margin: 10px;
+}
+
+.navbar, .category-title {
+    font-family: "Orbitron", sans-serif;
+    font-weight: 400;
+    color: lightgrey;
+}
 
 .text-shadow {
     text-shadow: 2px, 2px, 2px rgba(0, 0, 0, 0.5);
@@ -12,14 +27,12 @@ html{background-color: rgb(60, 60, 60);}
     line-height: 2;
 }
 
-.category-title{
-}
-
 /*---index.html---*/
 
 .hero-image-container{
-    background-image: linear-gradient(to right, blue , grey);
+    padding-top: 20px;
     min-width: 100%;
+    margin-bottom: 0;
 }
 
 #hero-image{
@@ -28,37 +41,43 @@ html{background-color: rgb(60, 60, 60);}
 }
 
 .game-thumbnail{
-    
+    width: 240px;
+    height: 240px;
+}
+@media only screen and (min-width: 993px) {
+    .game-thumbnail{
+    width: 200px;
+    height: 200px;
+}
 }
 
-.thumbnail-image{
-    max-height: 100%;
-}
+
 
 .thumbnail-title{
+    background-color: rgba(0, 0, 0, 0.7);
     width: 100%;
-    max-height: 50px;
+    size: xx-small;
+    padding: 0;
+    margin: 0;
+}
+.thumbnail-title:hover {
+    background-color: rgba(57, 57, 134, .7);
 }
 
 /*---games.html---*/
-
-.card-game-title{
-    padding-left: 20px;
-}
-
-.container {
-  margin: 4% 7%;
-  width: 86%;
+.game-card{
+    height: 800px;
 }
 
 .search-bar{
-    width: 80%;
-    margin: 4% 10%;
-    border-radius: 20px;
+    padding: 10px;
+    text-align: center;
 }
 
-.game-card{
-    height: 800px;
+#search-title{
+    font-family: "Orbitron", sans-serif;
+    font-weight: 400;
+
 }
 
 @media only screen and (min-width: 601px) {
@@ -73,3 +92,65 @@ html{background-color: rgb(60, 60, 60);}
 }
 }
 
+.games-card-title{
+    text-align: center;
+    font-family: "Orbitron", sans-serif;
+    font-weight: 400;
+    background-color: rgba(38, 62, 81, 0.7);
+    margin-top: 0;
+    padding: 20px;
+    color: white;
+}
+
+.game-card-image{
+    object-fit: cover;
+    width: 100%;
+    max-height: 300px;
+    overflow: hidden;
+}
+
+.card-action{
+    margin: 0;
+}
+
+.card-button{
+    display: flex;
+    justify-content: center;
+    margin: 4px auto;
+}
+
+
+.container {
+  margin: 4% 7%;
+  width: 86%;
+}
+
+.search-bar{
+    width: 80%;
+    margin: 4% 10%;
+    border-radius: 20px;
+}
+
+
+
+/*----forms----*/
+
+.form-background{
+    min-width: 100%;
+    padding: 5% 10%;
+}
+@media only screen and (min-width: 993px) {
+    .form-background{
+        padding: 8% 20%;
+    }
+}
+.card-panel{
+    border-radius: 20px;
+}
+
+/*---game details.html---*/
+
+.details-card{
+    width: 80%;
+    margin: 0 auto;
+}
