@@ -17,9 +17,7 @@ app.secret_key = os.environ.get("SECRET_KEY")
 
 mongo = PyMongo(app)
 
-#----Basic Functionality
 
-#homepage
 @app.route("/")
 @app.route("/get_index")
 def get_index():
@@ -118,7 +116,10 @@ def profile(username):
         {"username": session["user"]})["username"]
 
     if session["user"]:
-        return render_template("profile.html", username=username)
+        games = list(mongo.db.games.find(
+            {"added_by": session["user"]}).sort("time_stamp", -1))
+        return render_template("profile.html", username=username, games=games)
+
 
     return redirect(url_for("login"))
 
