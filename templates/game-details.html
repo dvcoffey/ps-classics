@@ -1,26 +1,29 @@
 {% extends "base.html" %}
 {% block content %}
-    <div class="row card details-card">
-        <span class="col s12 card-title blue darken-4 valign-wrapper white-text">{{ game.game_name }}</span>
-        <div class="card-image col s12 m5">
-            {% if game.img_url %}
-                <img src="{{ game.img_url }}">
-            {% else %}
-                <img src="{{ url_for('static', filename='images/ps-logo.png') }}">
-            {% endif %}
+    
+    <div class="form-background">
+        <div class="row card details-card">
+            <h3 class="form-title center-align">{{ game.game_name }}</h3>
+            <div class="card-image col s12 m5">
+                {% if game.img_url %}
+                    <img src="{{ game.img_url }}">
+                {% else %}
+                    <img src="{{ url_for('static', filename='images/ps-logo.png') }}">
+                {% endif %}
+            </div>
+            <div class="card-content col s12 m7">
+                <p>
+                    <b>Genre:</b> {{ game.genre_name }}<br>
+                    <b>Released:</b> {{ game.year }}<br>
+                    <b>Developed by:</b> {{ game.developer }}<br>
+                    <b>Published by:</b> {{ game.publisher }}<br>
+                    <em><b>Added by:</b> {{ game.added_by}}</em>
+                </p>
+            </div>
+            <div class="game-description">
+                {{ game.description}}
+            </div>
         </div>
-        <div class="card-content col s12 m7">
-        <p>
-            <b>Genre:</b> {{ game.genre_name }}<br>
-            <b>Released:</b> {{ game.year }}<br>
-            <b>Developed by:</b> {{ game.developer }}<br>
-            <b>Published by:</b> {{ game.publisher }}<br>
-            <em><b>Added by:</b> {{ game.added_by}}</em>
-        </p>
     </div>
-    <div class="form-background col s12">
-        <div class="card-panel">
-            {{ game.description}}
-        </div>
-    </div>
+
 {% endblock %}

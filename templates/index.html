@@ -3,13 +3,14 @@
 
     <!--hero image-->
     <div class="hero-image-container">
-        <img src="static/images/ps_header_image.png" id="hero-image" alt="Playstation Console Image">
+        <img src="static/images/ps-header-image.png" id="hero-image" alt="Playstation Console Image">
     </div>
 
     <!--recently added-->
     <div class="container">
         <h4 class="category-title">Recently Added</h4>
         <div class="row">
+            <!--list games by recently added-->
             {% for game in recents %}
                 <div class="col s12 m6 l3">
                     <div class="card game-thumbnail">
@@ -33,6 +34,7 @@
     <div class="container"> 
         <h4 class="category-title">Most Viewed</h4>  
         <div class="row">
+            <!--list games by most viewed-->
             {% for game in views %}
                 <div class="col s12 m6 l3">
                     <div class="card game-thumbnail">
@@ -51,10 +53,12 @@
             {% endfor %}
         </div>
     </div>
+
     <!--by genre-->
     <div class="container">
         <div class="row">
-            <h4 class="category-title">By Genre</h4> 
+            <h4 class="category-title">By Genre</h4>
+            <!--retrieve games with genre--> 
             {% for genre in genres %}
                 <div class="col s6 m4 l3">
                     <a href="{{ url_for('filter_genre', genre_name=genre.genre_name) }}">
@@ -68,4 +72,5 @@
             {% endfor %}
         </div>
     </div>
+
 {% endblock %}

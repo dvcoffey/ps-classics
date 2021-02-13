@@ -133,9 +133,7 @@ footer{
 }
 
 /*---games.html---*/
-.game-card{
-    height: 800px;
-}
+
 
 .search-bar{
     padding: 10px;
@@ -146,18 +144,6 @@ footer{
     font-family: "Orbitron", sans-serif;
     font-weight: 400;
 
-}
-
-@media only screen and (min-width: 601px) {
-    .game-card{
-    height: 700px;
-}
-}
-
-@media only screen and (min-width: 993px) {
-    .game-card{
-    height: 650px;
-}
 }
 
 .games-card-title{
@@ -179,6 +165,7 @@ footer{
 
 .card-action{
     margin: 0;
+    padding: 0;
 }
 
 .card-button{
@@ -197,6 +184,11 @@ footer{
     width: 80%;
     margin: 4% 10%;
     border-radius: 20px;
+}
+
+.add-genre-btn{
+    margin-top: 40px;
+    padding: 40px;
 }
 
 /*----forms----*/

@@ -1,13 +1,14 @@
 {% extends "base.html" %}
 {% block content %}
-    <!--Game Searchbar-->
+    
+<!--Game Searchbar-->
     <div class="row card-panel search-bar">
         <h4 class="form-title">Search Games</h4>
         <form action="{{ url_for('games') }}" method="GET" class="col s12">
             <div class="row valign-wrapper center-align">
                 <div class="input-field col s12 m7">
                     <i class="fas fa-search prefix grey-text darken-4 left"></i>
-                    <input type="text" name="query" id="query" minlength="2" class="validate" required>
+                    <input type="text" name="query" id="query" minlength="2" maxlength="32" class="validate" required>
                     <label for="query">Search Games</label>
                 </div>
                 <div class="col s12 m5">
@@ -19,6 +20,7 @@
             </div>
         </form>
     </div>
+
     <!--game card-->
     <div class="container">   
         <div class="row">
@@ -70,5 +72,6 @@
                 </div>
             {% endfor %}
         </div>
-    </div> 
+    </div>
+     
 {% endblock %}
