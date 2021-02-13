@@ -22,7 +22,7 @@
                                     <img src="{{ url_for('static', filename='images/ps-logo.png') }}">
                                 {% endif %}
                             </div>
-                            <span class="thumbnail-title">{{ game.game_name }}</span>
+                            <span class=" card-title thumbnail-title">{{ game.game_name }}</span>
                         </a>
                     </div>
                 </div> 
@@ -36,7 +36,7 @@
         <div class="row">
             <!--list games by most viewed-->
             {% for game in views %}
-                <div class="col s12 m6 l3">
+                <div class=" thumbnail-container col s12 m6 l3">
                     <div class="card game-thumbnail">
                         <a href="{{ url_for('details', game_id=game._id) }}">
                             <div class="card-image thumbnail-image">

@@ -27,8 +27,8 @@ def index():
     List genres to browse by genre
     Return index.html
     """
-    recents = list(mongo.db.games.find().sort("time_stamp", -1).limit(6))
-    views = list(mongo.db.games.find().sort("page_views", -1).limit(6))
+    recents = list(mongo.db.games.find().sort("time_stamp", -1).limit(4))
+    views = list(mongo.db.games.find().sort("page_views", -1).limit(4))
     genres = list(mongo.db.genres.find().sort("genre_name", 1))
     return render_template(
         "index.html", recents=recents, views=views, genres=genres)
@@ -43,22 +43,10 @@ def games():
     """
     query = request.args.get("query")
     if query:
-        games = mongo.db.games.find(({"$text": {"$search": query}}))
+        games = mongo.db.games.find(({"$text": {"$search": query}})).sort("_id", -1)
     else:
-        games = mongo.db.games.find()
-    return render_template("games.html", games=games)
-
-
-@app.route("/search", methods=["GET", "POST"])
-def search():
-    '''
-    Get query by form input
-    Find games by matching query
-    Return games.html
-    '''
-    query = request.form.get("query")
-    games = mongo.db.games.find(({"$text": {"$search": query}}))
-    return render_template("games.html", games=games)
+        games = mongo.db.games.find().sort("_id", -1)
+    return render_template("games.html", games=games, query=query)
 
 
 @app.route("/details/<game_id>")

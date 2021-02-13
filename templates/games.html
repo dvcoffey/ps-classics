@@ -8,7 +8,7 @@
             <div class="row center-align">
                 <div class="input-field col s12">
                     <i class="fas fa-search prefix grey-text darken-4 left"></i>
-                    <input type="text" name="query" id="query" minlength="2" maxlength="32" class="validate" required>
+                    <input type="text" name="query" value="{{ query if query }}" id="query" minlength="2" maxlength="32" class="validate" required>
                     <label for="query">Search Games</label>
                 </div>
                 <div class="col s12">
