@@ -2,32 +2,34 @@
 
 ![](static/images/mockup.png)
 
-The live website can be found [here](https://flask-ps-classics-project.herokuapp.com/)
+The live website can be found [here](https://flask-ps-classics-project.herokuapp.com/).
 
 PS Classics is an online database dedicated to cataloging the games released for the original Playstation console. 
 
+
 ## UX
 
-This website is designed with these users as the focus 
+This website is designed with these users as the focus.
 
-- The Visitor
+### The Visitor
 Visitors can read about classic playstation games.
 
-- The Registered User
+### The Registered User
 The registered user has the ability to add games to the database, and edit their entries.
 
-- The Administrator. 
+### The Administrator 
 The Administrator has full control over the database.
+
 
 ## User Stories
 
-### The Casual User
+### The Visitor
 
-- As a visitor , I want to learn about classic playstation games. I am directed to the website via an ad or social media. 
+#### As a visitor , I want to learn about classic playstation games. I am directed to the website via an ad or social media. 
 
 Visitors are greeted with the homepage and logo to confirm they are in the right place.
 
-- Now that I am on the website I would like to learn about playstation games.
+#### Now that I am on the website I would like to learn about playstation games.
 
 The homepage will display games to the user in thumbnails sorted by most recently added, most viewed and the ability to browse by genre.
 They also have access to the games page which will display a list of all games in the database in a larger card format with more details. 
@@ -36,52 +38,54 @@ Clicking on a thumbnail or a game card will redirect the user to the game detail
 
 The game details page will provide the games recorded information along with a link to search for the game on amazon if the visitor is interested in purchasing the game.
 
-- As a visitor I only like want to learn about a certain type of game
+#### As a visitor I only like want to learn about a certain type of game.
 
 If the user is only interested in a certain genre, 'horror' for instance, they can navigate to the bottom of the homepage and select this genre from a series of cards.
 Clicking on a card will take them to the games page, with only the game cards of the selected genre displaying.
 
-- What if I want to search for one specific game?
+#### What if I want to search for one specific game?
 
 The games page has a search bar on top allowing the visitor to search for games using a typed query.
 This typed query will also take into account the game's developer and publisher.
 
-- I've applied a search filter, how do I undo it?
+#### I've applied a search filter, how do I undo it?
 
 Clicking on the home link, or PS Classics logo in the navbar will return the user to the homepage clearing all filters.
 In the searchbar there is also a reset button that will clear all search filters.
 
-- Okay, I like this website, I would like some extra features.
+#### Okay, I like this website, I would like some extra features.
 
 The navbar provides a link to the registration page, allowing the visitor to sign up and become a registered user.
 
+
 ### The Registered User
 
-- As a registered user, I would like to improve this database by adding to it.
+#### As a registered user, I would like to improve this database by adding to it.
 
-When a registered user is logged in, they will be brought to their profile page. For new users this will be empty until they add to the database 
+When a registered user is logged in, they will be brought to their profile page. For new users this will be empty until they add to the database.
 
-- So how do I add a game to the database?
+#### So how do I add a game to the database?
 
 More options will be available to the registered user in the navbar. 
 One of these is "Add Game". Clicking on this will redirect the user to a new page where they can fill out a form and submit their entry to the database.
 
-- I have added a game, but I made a mistake.
+#### I have added a game, but I made a mistake.
 
 The user can navigate to the game details page of the game they have added. This can be done using the games page or the homepage which will show the most recently added games.
 Alternatively they can visit their profile page and locate the game there.
 The game details page will contain an edit button allowing to user to correct the fields they entered in the form previously.
 
-- I want to remove my entry from the database
+#### I want to remove my entry from the database.
 
 The game details page will also contain a delete button, allowing the user to delete their entry from the database entirely.
 A popup window will appear for confirmation incase the delete button was selected in error.
 
 The edit and delete buttons for games that you have added will not be visible to other users.
 
+
 ### The Administrator
 
-- As an administrator I need control over the database entries to maintain a consistent website.
+#### As an administrator I need control over the database entries to maintain a consistent website.
 
 The administrator can edit or delete any entry to the database by navigating to the game details page.
 The edit and delete options will be available to the administrator for any game.
@@ -93,26 +97,44 @@ The administrator also has acces to the genre manager, which will allow them to 
 This site is primarily a fan wesite, and proof of concept for a working live directory of classic playstation games.
 The goal is to provide the user with an enjoyable experience, and the ability to learn about a piece of gaming history.
 
+
 ## Scope
 Visitors should be provided with enough information quickly to determine if this is a site that they like (or dislike).
 If a user wants to purchase a game for their collection, they are provided with a link to the game on amazon.com
 Although this is not a business focused website a similar strategy could be applied to a game store front with the 'amazon.com' link replaced instead by a 'purchase from store' link
 If the Game Developer were to own an online store front, the player could be directed here at the end of the game with the hope of gaining more business.
 
+
 ## Structure
-The Logo/Brand is always visible at the top left of the page, in the navbar and will verify for the user that they are in the right place 
+The Logo/Brand is always visible at the top left of the page, in the navbar and will verify for the user that they are in the right place.
 This also acts as a home button which will redirect the user back to the homepage.
-The homepage will appear first with the navbar providing the user to other pages on the site
+The homepage will appear first with the navbar providing the user to other pages on the site.
+On mobile deivices the navbar links will be available to the right via a dropdown 'hamburger' icon.
 
+### Three instances of the navbar
 
-The player name input occupies the center of the title screen with the play button located just underneath.
-The play button will hide the title screen. It will then show the game canvas and initialise the game.
-When the game ends the game will stop and the game over screen will appear over the canvas.
-The game over screen will show the player score in the center along with a button underneath to allow the player to try again.
-This hide the game over screen and start the game from the beginning. 
+#### For the visitor.
+1. Home
+2. Games
+3. Login
+4. Register
 
-In game the player score will be visible in the upper left of the screen.
-On mobile devices, player input controls will be visible in the lower left of the screen.
+#### For the registered user (logged in).
+
+1. Home
+2. Games
+3. Profile
+4. Add Game
+5. Log Out
+
+#### For the Administrator (logged in).
+
+1. Home
+2. Games
+3. Profile
+4. Add Game
+5. Manage Genres
+6. Log Out
 
 
 ## Skeleton
