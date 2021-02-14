@@ -1,6 +1,5 @@
 {% extends "base.html" %}
 {% block content %}
-    
     <div class="form-background">
         <div class="row card-panel grey lighten-5">
             <h3 class="form-title center-align">Edit Genre</h3>
@@ -15,7 +14,7 @@
                     </div>
                 </div>
                 
-                <!-- submit button -->
+                <!-- buttons -->
                 <div class="row">
                     <div class="col s12 center-align">
                         <a href="{{ url_for('genres') }}" class="btn-large grey edit-genre-btn darken-4">
@@ -27,6 +26,8 @@
                         <a class="btn-large red edit-genre-btn darken-4 modal-trigger" href="#delete-genre-modal">
                             Delete
                         </a>
+
+                        <!-- modal -->
                         <div id="delete-genre-modal" class="modal">
                             <div class="modal-content">
                                 <h4 class="form-title">Are you sure?</h4>

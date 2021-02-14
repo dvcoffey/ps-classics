@@ -1,17 +1,24 @@
 {% extends "base.html" %}
 {% block content %}
-    
     <div class="form-background">
         <div class="card details-card">
+            
+            <!-- title -->
             <h3 class="form-title center-align">{{ game.game_name }}</h3>
             <div class="row">
+                
+                <!-- image -->
                 <div class="col s12 m5 card-image">
+                    
+                    <!-- default image if url is missing or broken -->
                     {% if game.img_url %}
-                        <img src="{{ game.img_url }}">
+                        <img src="{{ game.img_url }}" onerror="this.onerror=null; this.src='../static/images/ps-logo.png'">
                     {% else %}
                         <img src="{{ url_for('static', filename='images/ps-logo.png') }}">
                     {% endif %}
                 </div>
+                
+                <!-- info -->
                 <div class="col s12 m5">
                     <p>
                         <b>Genre:</b> {{ game.genre_name }}<br>
@@ -21,10 +28,14 @@
                         <em><b>Added by:</b> {{ game.added_by}}</em>
                     </p>
                 </div>
+                
+                <!-- buttons -->
                 <div class="col s12 m2 ">
                     <a href="https://www.amazon.com/s?k=ps1+{{ game.game_name}}"
                         target="_blank" class="btn col s12 yellow  accent-4">Amazon
-                    </a>    
+                    </a>
+                    
+                    <!-- buttons if game is added by current user -->   
                     {% if session.user|lower == game.added_by|lower %}
                         <a href="{{ url_for('edit_game', game_id=game._id ) }}" class="btn col s12 green accent-4">
                             Edit
@@ -32,6 +43,8 @@
                         <a class="btn col s12 red accent-4 modal-trigger" href="#delete-game-modal">
                             Delete
                         </a>
+                        
+                        <!-- modal to delete game -->
                         <div id="delete-game-modal" class="modal">
                             <div class="modal-content">
                                 <h4 class="form-title">Are you sure?</h4>
@@ -49,6 +62,8 @@
                     {% endif %}
                 </div>
             </div>
+            
+            <!-- game description -->
             <div class="game-description">
                 {{ game.description}}
             </div> 

@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
-
+    
+    <!-- username's profile title -->
     <div class="row">
         <div class="col s12 m8 offset-m2" method="POST" action="{{ url_for('login') }}">
             <h3 class="center-align category-title">
@@ -8,16 +9,24 @@
             </h3>
         </div>
     </div>
+    
+    <!-- games added by username -->
     <div class="container">   
         <div class="row">
             <h4 class="center-align category-title">
                 Games added by {{ username }}
             </h4>
+            
+            <!-- retrieve list of games -->
             {% for game in games %}
                 <div class="col s12 m6 l4">
                     <div class="card game-card container">
                         <a href="{{ url_for('details', game_id=game._id) }}">
+                            
+                            <!-- image -->
                             <div class="card-image game-card-image">
+                                
+                                <!-- default image if url is missing or broken -->
                                 {% if game.img_url %}
                                     <img src="{{ game.img_url }}" onerror="this.onerror=null; this.src='../static/images/ps-logo.png'">
                                 {% else %}
@@ -25,7 +34,9 @@
                                 {% endif %}
                             </div>
                             <h6 class="card-title game-card-title">{{ game.game_name }}</h6>
-                        </a> 
+                        </a>
+                        
+                        <!-- info --> 
                         <div class="card-content">
                             <p>
                                 <b>Genre:</b> {{ game.genre_name }}<br>
@@ -35,11 +46,15 @@
                                 <em><b>Added by:</b> {{ game.added_by}}</em>
                             </p>
                         </div>
+                        
+                        <!-- buttons -->
                         <div class="card-action">
                             <div class="row button-container">
                                 <div class="col s12 card-button">
                                     <a href="https://www.amazon.com/s?k=ps1+{{ game.game_name}}"
-                                        target="_blank"  class="btn yellow white-text accent-4">Search on Amazon</a>    
+                                        target="_blank"  class="btn yellow white-text accent-4">
+                                        Search on Amazon
+                                    </a>    
                                 </div>
                             </div>
                         </div>

@@ -1,8 +1,10 @@
 {% extends "base.html" %}
 {% block content %}
-
+    
+    <!-- title -->
     <h4 class="category-title">Add a new Genre</h4>
-
+    
+    <!-- add genre button -->
     <div class="row">
         <div class="col s12 center-align">
             <a href="{{ url_for('add_genre') }}" class="btn-large add-genre-btn blue darken-4 accent-4">
@@ -10,30 +12,25 @@
             </a>
         </div>
     </div>
-
+    
+    <!-- title -->
     <h4 class="category-title">Edit an existing Genre</h4>
-
+    
+    <!--retrieve list of genres-->
     <div class="row">
-        <!--retrieve games with genre--> 
         {% for genre in genres %}
             <div class="col s6 m4 l3">
-                   
-                        <div class="card genre-thumbnail grey darken-4">
-                            <div class="card-content white-text">
-                                <span class="card-title center-align">{{ genre.genre_name }}</span>
-                            </div>
-                            <div class="card-content genre-button-conatiner row">
-                                <div class="center-align">   
-                                    <a href="{{ url_for('edit_genre', genre_id=genre._id) }}" class="btn blue darken-4  accent-4">Edit</a>
-                                </div>
-                            </div>
+                <div class="card genre-thumbnail grey darken-4">
+                    <div class="card-content white-text">
+                        <span class="card-title center-align">{{ genre.genre_name }}</span>
+                    </div>
+                    <div class="card-content genre-button-conatiner row">
+                        <div class="center-align">   
+                            <a href="{{ url_for('edit_genre', genre_id=genre._id) }}" class="btn blue darken-4  accent-4">Edit</a>
                         </div>
-            
+                    </div>
                 </div>
+            </div>
         {% endfor %}
     </div>
-   
-
-                            
-
 {% endblock %}

@@ -1,21 +1,26 @@
 {% extends "base.html" %}
 {% block content %}
-
+    
     <!--hero image-->
     <div class="hero-image-container">
         <img src="static/images/ps-header-image.png" id="hero-image" alt="Playstation Console Image">
     </div>
-
+    
     <!--recently added-->
     <div class="container">
         <h4 class="category-title">Recently Added</h4>
         <div class="row">
+            
             <!--list games by recently added-->
             {% for game in recents %}
                 <div class="col s12 m6 l3">
                     <div class="card game-thumbnail">
                         <a href="{{ url_for('details', game_id=game._id) }}">
+                            
+                            <!-- image -->
                             <div class="card-image thumbnail-image">
+                                
+                                <!-- default image if url is missing or broken -->
                                 {% if game.img_url %}
                                     <img src="{{ game.img_url }}" onerror="this.onerror=null; this.src='../static/images/ps-logo.png'">
                                 {% else %}
@@ -29,17 +34,22 @@
             {% endfor %}
         </div>
     </div>
-
+    
     <!--most viewed-->
     <div class="container"> 
         <h4 class="category-title">Most Viewed</h4>  
         <div class="row">
+            
             <!--list games by most viewed-->
             {% for game in views %}
                 <div class=" thumbnail-container col s12 m6 l3">
                     <div class="card game-thumbnail">
                         <a href="{{ url_for('details', game_id=game._id) }}">
+                            
+                            <!-- image -->
                             <div class="card-image thumbnail-image">
+                                
+                                <!-- default image if url is missing or broken -->
                                 {% if game.img_url %}
                                     <img src="{{ game.img_url }}" onerror="this.onerror=null; this.src='../static/images/ps-logo.png'">
                                 {% else %}
@@ -53,12 +63,13 @@
             {% endfor %}
         </div>
     </div>
-
+    
     <!--by genre-->
     <div class="container">
         <div class="row">
             <h4 class="category-title">By Genre</h4>
-            <!--retrieve games with genre--> 
+            
+            <!--retrieve list of genres--> 
             {% for genre in genres %}
                 <div class="col s6 m4 l3">
                     <a href="{{ url_for('filter_genre', genre_name=genre.genre_name) }}">
@@ -72,5 +83,4 @@
             {% endfor %}
         </div>
     </div>
-
 {% endblock %}

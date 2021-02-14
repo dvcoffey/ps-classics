@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
     
-    <!--Game Searchbar-->
+    <!-- searchbar -->
     <div class="row card-panel search-bar">
         <h4 class="form-title">Search Games</h4>
         <form action="{{ url_for('games') }}" method="GET" class="col s12">
@@ -20,15 +20,17 @@
             </div>
         </form>
     </div>
-
-    <!--game card-->
+    
+    <!-- game card -->
     <div class="container">   
         <div class="row">
             {% for game in games %}
                 <div class="col s12 m6 l4">
                     <div class="card game-card container">
                         <a href="{{ url_for('details', game_id=game._id) }}">
+                            <!-- image -->
                             <div class="card-image game-card-image">
+                                <!-- default image if url is missing or broken -->
                                 {% if game.img_url %}
                                     <img src="{{ game.img_url }}" onerror="this.onerror=null; this.src='../static/images/ps-logo.png'">
                                 {% else %}
@@ -36,7 +38,9 @@
                                 {% endif %}
                             </div>
                             <h6 class="card-title game-card-title">{{ game.game_name }}</h6>
-                        </a> 
+                        </a>
+                        
+                        <!-- game info --> 
                         <div class="card-content">
                             <p>
                                 <b>Genre:</b> {{ game.genre_name }}<br>
@@ -46,11 +50,14 @@
                                 <em><b>Added by:</b> {{ game.added_by}}</em>
                             </p>
                         </div>
+                        
+                        <!-- button searches for game on amazon --> 
                         <div class="card-action">
                             <div class="row button-container">
                                 <div class="col s12 card-button">
                                     <a href="https://www.amazon.com/s?k=ps1+{{ game.game_name}}"
-                                        target="_blank" class="btn yellow white-text accent-4">Search on Amazon</a>    
+                                        target="_blank" class="btn yellow white-text accent-4">Search on Amazon
+                                    </a>    
                                 </div>
                             </div>
                         </div>
@@ -59,5 +66,4 @@
             {% endfor %}
         </div>
     </div>
-     
 {% endblock %}

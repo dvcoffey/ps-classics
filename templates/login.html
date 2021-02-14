@@ -1,13 +1,11 @@
 {% extends "base.html" %}
 {% block content %}
-
-    
-
     <div class="row">
         <form class="col s12 m8 offset-m2" method="POST" action="{{ url_for('login') }}">
             <div class="card-panel">
                 <h3 class = "form-title center-align">Log In</h3>
-                <!-- username-->
+                
+                <!-- username -->
                 <div class="row">
                     <div class="input-field col s12">
                         <i class="fas fa-user-cog prefix light-blue-text text-darken-4"></i>
@@ -16,7 +14,8 @@
                         <label for="username">Username</label>
                     </div>
                 </div>
-                <!-- password-->
+                
+                <!-- password -->
                 <div class="row">
                     <div class="input-field col s12">
                         <i class="fas fa-user-lock prefix light-blue-text text-darken-4"></i>
@@ -25,12 +24,15 @@
                         <label for="password">Password</label>
                     </div>
                 </div>
-                <!-- login-->
+                
+                <!-- login -->
                 <div class="row">
                     <button type="submit" class="col s12 btn-large light-blue darken-4">
                         Log In <i class="fas fa-sign-in-alt"></i>
                     </button>
                 </div>
+
+                <!-- link to register -->
                 <div class="row">
                     <div class="col s12">
                         <p class="center-align">
@@ -42,6 +44,4 @@
             </div>
         </form>
     </div>
-    
-    
 {% endblock %}
