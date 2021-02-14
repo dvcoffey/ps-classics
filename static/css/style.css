@@ -21,7 +21,6 @@ main {
 
 .page-footer {
     background-color: rgba(64, 64, 64, 0.5);
-    font-family: "Montserrat" sans-serif;
 }
 
 .container {
@@ -146,6 +145,7 @@ main {
     width: 100%;
     margin: 0 auto;
     padding: 0px 4px !important;
+    font-family: "Montserrat", sans-serif;
     color: white;
 }
 
@@ -189,6 +189,7 @@ main {
 
 .card-content{
     padding: auto !important;
+    font-family: "Montserrat", sans-serif;
 }
 
 .card-action{
@@ -287,6 +288,7 @@ ul.dropdown-content.select-dropdown li span {
 }
 
 .game-description{
+    font-family: "Montserrat", sans-serif;
     margin: 20px;
     padding: 20px;;
 }
