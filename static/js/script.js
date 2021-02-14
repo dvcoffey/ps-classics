@@ -4,6 +4,7 @@ $(document).ready(function(){
     $('.sidenav').sidenav({edge: "right"});
     $(".collapsible").collapsible();
     $('select').formSelect();
+    $('.modal').modal();
     $('.datepicker').datepicker({
         defaultDate: new Date(1994, 11, 3),
         setDefaultDate: true,
