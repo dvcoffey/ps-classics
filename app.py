@@ -281,7 +281,7 @@ def page_not_found(error):
     return render_template('404.html', title='404'), 404
 
 
-# 505 Error Handler
+# 500 Error Handler
 @app.errorhandler(500)
 def internal_server(error):
     return render_template('500.html', title='500'), 500
