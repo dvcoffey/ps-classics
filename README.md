@@ -166,7 +166,7 @@ This can only be accessed by the administrator via the manage genres page
 
 The following wireframes were constructed using paint.net.
 
-[View here.](static/images/wireframes/wireframes.pdf)
+[View here.](static/wireframes/wireframes.pdf)
 
 These wireframes show the initial template for the website.
 
