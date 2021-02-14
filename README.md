@@ -12,12 +12,15 @@ PS Classics is an online database dedicated to cataloging the games released for
 This website is designed with these users as the focus.
 
 ### The Visitor
+
 Visitors can read about classic playstation games.
 
 ### The Registered User
+
 The registered user has the ability to add games to the database, and edit their entries.
 
 ### The Administrator 
+
 The Administrator has full control over the database.
 
 
@@ -32,7 +35,7 @@ Visitors are greeted with the homepage and logo to confirm they are in the right
 #### Now that I am on the website I would like to learn about playstation games.
 
 The homepage will display games to the user in thumbnails sorted by most recently added, most viewed and the ability to browse by genre.
-They also have access to the games page which will display a list of all games in the database in a larger card format with more details. 
+They also have access to the game directory page which will display a list of all games in the database in a larger card format with more details. 
 
 Clicking on a thumbnail or a game card will redirect the user to the game details page.
 
@@ -41,11 +44,11 @@ The game details page will provide the games recorded information along with a l
 #### As a visitor I only like want to learn about a certain type of game.
 
 If the user is only interested in a certain genre, 'horror' for instance, they can navigate to the bottom of the homepage and select this genre from a series of cards.
-Clicking on a card will take them to the games page, with only the game cards of the selected genre displaying.
+Clicking on a card will take them to the game directory page, with only the game cards of the selected genre displaying.
 
 #### What if I want to search for one specific game?
 
-The games page has a search bar on top allowing the visitor to search for games using a typed query.
+The game directory page has a search bar on top allowing the visitor to search for games using a typed query.
 This typed query will also take into account the game's developer and publisher.
 
 #### I've applied a search filter, how do I undo it?
@@ -71,7 +74,7 @@ One of these is "Add Game". Clicking on this will redirect the user to a new pag
 
 #### I have added a game, but I made a mistake.
 
-The user can navigate to the game details page of the game they have added. This can be done using the games page or the homepage which will show the most recently added games.
+The user can navigate to the game details page of the game they have added. This can be done using the game directory page or the homepage which will show the most recently added games.
 Alternatively they can visit their profile page and locate the game there.
 The game details page will contain an edit button allowing to user to correct the fields they entered in the form previously.
 
@@ -94,18 +97,21 @@ The administrator also has acces to the genre manager, which will allow them to 
 
 
 ## Strategy
+
 This site is primarily a fan wesite, and proof of concept for a working live directory of classic playstation games.
 The goal is to provide the user with an enjoyable experience, and the ability to learn about a piece of gaming history.
 
 
 ## Scope
+
 Visitors should be provided with enough information quickly to determine if this is a site that they like (or dislike).
 If a user wants to purchase a game for their collection, they are provided with a link to the game on amazon.com
 Although this is not a business focused website a similar strategy could be applied to a game store front with the 'amazon.com' link replaced instead by a 'purchase from store' link
-If the Game Developer were to own an online store front, the player could be directed here at the end of the game with the hope of gaining more business.
+If the Game Developer were to own an online store front, this could be used to sell the product.
 
 
 ## Structure
+
 The Logo/Brand is always visible at the top left of the page, in the navbar and will verify for the user that they are in the right place.
 This also acts as a home button which will redirect the user back to the homepage.
 The homepage will appear first with the navbar providing the user to other pages on the site.
@@ -114,6 +120,7 @@ On mobile deivices the navbar links will be available to the right via a dropdow
 ### Three instances of the navbar
 
 #### For the visitor.
+
 1. Home
 2. Games
 3. Login
@@ -136,6 +143,24 @@ On mobile deivices the navbar links will be available to the right via a dropdow
 5. Manage Genres
 6. Log Out
 
+### The following pages cannot be accesed via the nav bar.
+
+#### The game details page.
+
+This is accessed either by clicking on a game's thumbail or card, in the game directory or the homepage
+
+#### The edit game page.
+
+This can be accessed via the game setails page if the game was added to the database by the current user, or if the current user is th administrator.
+
+#### The add genre page.
+
+This can only be accessed by the administrator via the manage genres page
+
+#### The edit genre page.
+
+This can only be accessed by the administrator via the manage genres page
+
 
 ## Skeleton
 
@@ -153,30 +178,61 @@ The following wireframes were constructed using paint.net.
 ### Add Game
 ![](static/images/wireframes/add-game.png)
 
+These wireframes show the initial template for the website.
+
+In comparison to the live website there are not too many differences.
+Though the existing differences include.
+
+- The blue gradient in the hero image has been implemented as a background across the entire site.
+- The addition of the game directory page. The search bar has been moved here and it displays all games in the database.
+- The top rated games on the homepage have been replaced with games by "most recent", "most viewed" and "by genre"
+- The addition of a genre manager.
+- Extra fields added to games include "developed by" and "published by".
+- The "leave a review section has been removed from the scope of the project.
+- The edit and delete functionality has been moved to the game details page.
 
 
 ## Surface
-The color scheme mainly consists of blue and yellow, I chose these colors because they have good contrast together, and are reminiscent of classic 16 bit games such as sonic the hedgehog.
-The game buttons are off white so they will stand out on a blue background
+
+The color scheme mainly consists of blue, grey and white. 
+The background is a blue to grey gradient that exists across the entire site.
+I chose these colors because I believe have good contrast together. 
+I also attempted to recreate the pallete and imagery of the playstation magazines in the 1990s, albeit less 'loud', and more consistent with modern websites.
+ 
 
 ## Features
 
+#### Responsiveness
+
+The site scales relatively well from small screens to large.
+Some issues can be found  however. These will be discussed in the testing section.
+
 #### Logo/Home Button
-The logo is present at all times at the top of the page, it does not take up a large amount of space and provides the user with a link to back to the homepage at all times.
 
-#### Name input
+The logo is present at all times at the top left of the page. 
+It does not take up a large amount of space, but is prominent across the site and provides the user with a link to back to the homepage at all times.
 
-The player can input their name on the title screen. 
-This name will then be displayed beside the player score at the end of the game.
-Name entry is not required and if left empty will contain the name "Player"
+#### Navbar
 
-#### Score
+The user can navigate the site using the navbar.
+The navbar will collapse to the side on mobile devices and can bia accessed via a 'hamburger icon'. 
 
-As each obstacle is evaded the player score will increase by one.
+#### Homepage
 
-#### Game speed
+##### Most recent
 
-As each obstacle is evaded the game speed will slowly increase, gradually making the game more difficult as time passes.
+This will display the 4 most recent games. 
+
+##### Most viewed
+
+This will display the 4 most viewed games. 
+
+##### By genre
+
+This will display a the existing genres.
+Each can be clicked on to browse games of that genre. 
+
+
 
 #### Player Control
 
