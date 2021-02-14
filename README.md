@@ -139,8 +139,21 @@ On mobile deivices the navbar links will be available to the right via a dropdow
 
 ## Skeleton
 
-The wireframe planning for this project was constructed using paint.net.
-Using the layers I was able to diplay objects in motion over the background
+The following wireframes were constructed using paint.net.
+
+### Homepage
+![](static/images/wireframes/homepage.png)
+
+### Profile 
+![](static/images/wireframes/profile.png)
+
+### Details
+![](static/images/wireframes/details.png)
+
+### Add Game
+![](static/images/wireframes/add-game.png)
+
+
 
 ## Surface
 The color scheme mainly consists of blue and yellow, I chose these colors because they have good contrast together, and are reminiscent of classic 16 bit games such as sonic the hedgehog.
