@@ -56,7 +56,7 @@ def details(game_id):
     Return game-details.html
     '''
     game = mongo.db.games.find_one({"_id": ObjectId(game_id)})
-    mongo.db.games.update(
+    mongo.db.games.update_one(
         {"_id": ObjectId(game_id)}, {'$inc': {'page_views': +1}})
     return render_template("game-details.html", game=game)
 
