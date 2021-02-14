@@ -166,17 +166,7 @@ This can only be accessed by the administrator via the manage genres page
 
 The following wireframes were constructed using paint.net.
 
-### Homepage
-![](static/images/wireframes/homepage.png)
-
-### Profile 
-![](static/images/wireframes/profile.png)
-
-### Details
-![](static/images/wireframes/details.png)
-
-### Add Game
-![](static/images/wireframes/add-game.png)
+[View here.](https://dvcoffey.github.io/ps-classics/static/wireframes/wireframes.pdf)
 
 These wireframes show the initial template for the website.
 
@@ -305,6 +295,11 @@ A popup window will appear if a genre is to be deleted allowing the administrato
 The footer will provide links to the original playstation on Youtube, Facebook, and Twitter.
 These will open in a new window.
 
+#### 404 and 500 error pages
+
+If the user encounters either of these errors they will be shown a custom page.
+They can navigate back to the homepage from here via a button or the navbar. 
+
 ## Future ideas
 
 Reviews and rating. Users should be able to provide reviews and give the game a score.
@@ -399,102 +394,6 @@ This will take a few minutes, when it is complete it wildisplay the message:
 Clicking on 'view' will launch the new apllication.
 
 
-     
-
-
-
-
-
-
-
-
-## Testing and Deployment
-
-#### Title Screen
-
-- The home screen button is created and styled in HTML and CSS. 
-    
-    Developer tools are then used in the broswer to determine that the home button is apparent and positioned in the right place.
-
-- The command button and title text are created and styled.
-
-Developer tools are used to to ensure that these are apparent and in the correct place.
-The developer tools is then used to preview the screen on different devices.
-In some cases these have overlapped , and so adjustments were made the the positioning of elements to suit all devices.
-Links are then tested by clicking on them to verify they are working. 
-If the link is not working the code is checked to ensure the correct address is used.
-
-#### Game Over Screen
-
-- The game over screen is created and styled similar to the title screen.
-        
-The reset button is controlled using javascript will will be covered later on.
-
-#### Portrait Warning Screen
-
-- A warning screen is implemented using a hidden div with CSS media query.
-This will be  displayed if the users device is orientated in portrait mode
-    
-This could be tested in the developer tools by orientating the screen into portrait mode.
-Initially this did not work as I had confused portrait and landscape modes. 
-Once corrected it was found to be working.
-This was further tested by deploying the site to Github Pages (covered later on.)
-The warning could then be tested on a mobile device.
-
-#### Main.js 
-
-- There were many times during development where a javascript function was implemented, and did not work as intended.
-The solution to this was found using the console.log() function in various stages of the code to track what was happening in the browser.
-        
-- The collision detection function was declared and implemented, but did not work.
-The console log() function was added to print to the console if a collision has been detected.
-The console log did print that the collision had been detected, and so the issue lay elsewhere.
-The Collision detection is called in the animate function, but it was placed in the incorrect order.
-This was changed and the collision dectection worked.
-        
-- The largest function in the project is the animate function.
-At many stages during development this would cease to work as newer elements were added.
-The console log was placed in the animation function at various stages to track the progress in the browser.
-This allowed to track the order of events. If the console did not log an event, the issue could be located.
-
-- Collision Hit Boxes
-During development, Rectangular shapes were drawn around the ninja and obstacles so the that the hit box could be visualised.
-This was later removed, as the hitboxes were working as intended.
-
-- Asset Loading
-The game experienced issues if the user clicked the play button before the game images had loaded.
-The solution to this was found by placing an 'If' statement at the beginning of the animate function.
-This would display a loading splash screen until the assets were ready and the game would start.
-The console was also used here to print ready when the assets were loaded to test its functionality 
-
-#### Deployment
-The site was deployed to Github pages.
-This was achieved by pushing the existing code to Github and navgating to the settings tab on the Github repository page.
-Under the Github Pages section on this page, The master branch was selected to be hosted on Github Pages.
-The given link could then be used to further test the live website.
-This link was copied and pasted into the about section on the main Github repository page
-
-#### Further Testing
-At this stage the site could be tested on mobile phones. 
-
-- Div Overlap
-Overlapping divs were initially present on certain mobile screens. 
-This was rectified by repositioning the divs, pushing the code to the repository and testing again on the mobile device.
-
-### Issues Encountered
-
-- Game Restart
-If the player encountered a game over and restarted the game, there were several issues encountered.
-The first was that the gamespeed did not reset, and so this variable is redeclared when the player selects the 'Try Again' button.
-Another bug encountered was that the obstacles present on screen would not clear when the game was restarted.
-A 'clearObstacles()' function needed to be declared in the object.js. This could then be called in the main.js file on game restart.
-This was then tested and found to be working correctly. 
-
-- Certain Devices
-On certain mobile devices the game is pushed slightly off screen by the browser header, even further so if there is an external toolbar installed.
-This is likey because hard units are used in pixels to define canvas width and height, along with absolute positioning.
-There is no fix for this at present, however the game is still playable with the extreme edges cut off.
-
 ### Code Validation
 
 #### HTML 
@@ -509,16 +408,16 @@ Return message: Congratulations! No Error Found.
 Javascript validated at https://jshint.com/
 
 
-## Sources
+## Sources and acknowledgements
 
-### Images
+The images and game data for each game in this project along with the hero image were sourced on wikipedia.
 
-The Images for this project were sourced on opengameart.org
+https://www.w3schools.com/ was used for fast queries, mainly to check syntax and css parameters.
 
-## Acknowledgements
+The Code Institute provided most of the educational resource required to build this project.
 
-Research was conducted before the project was started.
-Inspiration for this game was taken from Franks Laborotory.
-https://www.youtube.com/watch?v=lGJ9i6CYKyQ
+Stack Overflow contained many helpful threads which were queried during development.
 
-Much of the the inspriration for the design of the game including hitbox detection, and game animation was found here.
+The Slack community and my fellow students at code institute for providing ispiration and assistance.
+
+This website is built purely for educational purposes.
