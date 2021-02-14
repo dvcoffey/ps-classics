@@ -233,7 +233,6 @@ footer{
 
 .form-background{
     min-width: 100%;
-    padding: 5% 10%;
 }
 @media only screen and (min-width: 993px) {
     .form-background{

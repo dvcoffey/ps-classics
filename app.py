@@ -3,7 +3,6 @@ from flask import (
     Flask, flash, render_template,
     redirect, request, session, url_for)
 from flask_pymongo import PyMongo
-from datetime import datetime
 from bson.objectid import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash
 if os.path.exists("env.py"):
@@ -27,7 +26,7 @@ def index():
     List genres to browse by genre
     Return index.html
     """
-    recents = list(mongo.db.games.find().sort("time_stamp", -1).limit(4))
+    recents = list(mongo.db.games.find().sort("_id", -1).limit(4))
     views = list(mongo.db.games.find().sort("page_views", -1).limit(4))
     genres = list(mongo.db.genres.find().sort("genre_name", 1))
     return render_template(
@@ -43,7 +42,8 @@ def games():
     """
     query = request.args.get("query")
     if query:
-        games = mongo.db.games.find(({"$text": {"$search": query}})).sort("_id", -1)
+        games = mongo.db.games.find(
+            ({"$text": {"$search": query}})).sort("_id", -1)
     else:
         games = mongo.db.games.find().sort("_id", -1)
     return render_template("games.html", games=games, query=query)
@@ -132,7 +132,7 @@ def profile(username):
     '''
     if session["user"]:
         games = list(mongo.db.games.find(
-            {"added_by": session["user"]}).sort("time_stamp", -1))
+            {"added_by": session["user"]}).sort("_id", -1))
         return render_template("profile.html", username=username, games=games)
 
     return redirect(url_for("login"))
@@ -155,7 +155,6 @@ def add_game():
     '''
     if request.method == "POST":
         # time_stamp stores datetime to a string to by used by database
-        time_stamp = str(datetime.now())
         game = {
             "game_name": request.form.get("game_name"),
             "img_url": request.form.get("img_url"),
@@ -164,8 +163,7 @@ def add_game():
             "developer": request.form.get("developer"),
             "publisher": request.form.get("publisher"),
             "description": request.form.get("description"),
-            "added_by": session["user"],
-            "time_stamp": time_stamp
+            "added_by": session["user"]
         }
         mongo.db.games.insert_one(game)
         flash("Game Added To Database")
@@ -280,4 +278,4 @@ def filter_genre(genre_name):
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
-            debug=True)
+            debug=False)
