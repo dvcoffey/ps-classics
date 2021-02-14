@@ -391,21 +391,13 @@ Heroku will now use the code from GitHub and start building the app.
 This will take a few minutes, when it is complete it wildisplay the message:
 'Your app was successfully deployed'
 
-Clicking on 'view' will launch the new apllication.
+Clicking on 'view' will launch the new application.
 
+## Testing and Validation
 
-### Code Validation
+Documentation for the testing of this site can be found in a seperate .md file
 
-#### HTML 
-Validated at https://validator.w3.org/
-Return message: Document checking completed. No errors or warnings to show.
-
-#### CSS
-Validated at https://jigsaw.w3.org/css-validator/
-Return message: Congratulations! No Error Found.
-
-#### Javascript
-Javascript validated at https://jshint.com/
+[View here.](testing.md)
 
 
 ## Sources and acknowledgements
