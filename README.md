@@ -233,71 +233,179 @@ This will display a the existing genres.
 Each can be clicked on to browse games of that genre. 
 
 
+#### Game directory
 
-#### Player Control
+By clicking on the 'Game' link in the navbar the user will be brought to the game directory page.
+This will list all of the games in the database sorted by the order they were added, starting with the most recent.
+Alternatively the iser will be brought here with the games filtered by the methods specified above.
 
-The ninja can exist in two locations throughout the game, standing on top of the train or clinging to the side.
-This is achieved by using event listeners to trigger either a "jump" or "drop" state for the ninja.
-These states then change the y coordinates of the ninja on the canvas.
+#### Searchbar
 
-#### Sprite manipulation
+The game directory page has a searchbar at the top, allowing the user to input keywords and then submit. This will filter the results shown below.
+The user can also reset the search query by clicking the reset button, which will display all games int the directory.
 
-The ninja sprite sheet containes multiple images of the same ninja in various positions.
-HTML Canvas is then used to determine which section of the sprite sheet is drawn depending on the ninja's state.
-This allows for the ninja to be 'standing' on top of the train or 'hanging' off the side for instance.  
+#### Registration
 
-#### Random Obstacles
+New users can register an account with a username and password. 
+The account will allow the user to add games to the directory. or edit the games that only they have already added.
 
-An obstacle array is declared, and then two types of obstacles are defined, in this case they are a bird and a lamp.
-(In the object.js file the lamp is declared as a pylon however the best artwork I could source was a lamp).
-A function is declared then that will:
+#### Log in 
 
-- Use a random boolean generator to determine which obstacle is selected
-- Push the selected obstacle into the array
-- Determine the position and motion of the object using the canvas
-- Remove the last obstacle from the array when the array reaches a certain length
+Users who already have an account can log in here using their username and password.
 
-This allows for the obstacles to appear in random variety, and approach the ninja from the right side of the screen.
+#### Log out
 
-#### Collision Detection
+Logged in users can log out here.
 
-Using Javascript and Html canvas a function can be triggered when two obstacles collide. 
-The is handled in the handle collisions function using if statements to determine if the ninjas coordinates intersected those of the obstacles.
-When a collision is detected the game will stop, and the game over screen will appear. 
+#### Add Game
 
-#### Animation
+Users can select 'Add Game' from the navbar.
+This will redirect them to a form which will allow them to input the game's information.
+This includes:
 
-The animation function is the core element of the the game and includes most of the game functions.
-It determines the position of the foreground and background, and also pushes the game into its next frame for object motion.
-The functions for handling backgound, handling forground, handling obstacles, updating ninja position, drawing ninja sprite, drawing player score and handling collisions are all nested within here.
+- Game Title (required)
+- Image URL (not required, a default image will display if the link is broken or not provided)
+- Choose Genre (required)
+- Release Date (required)
+- Game Developer (not required)
+- Game Publisher (not required) 
+- Game description (not required)
 
-#### Loading screen
+#### Game Details
 
-If the player initializes the game before all of the resources are loaded, a loading screen will appear until they are.
-After the conditions are met the game will start automatically
+User can view the games full details by clicking on a game from either the homepage or the game directory page.
+This will contain the games description, along with the other fields.
+
+#### Search on amazon.com
+
+The game directory page and the game details page provide a link which will open a new window.
+This window will redirect the user to the search results for that game on amazon.
+
+#### Edit Game
+
+The game details page will have a button for the user to edit the game.
+This can only be accesed by the user who added the game or the site administrator.
+The button will open up a form with the games existing data filled in.
+This can be edited for submission or cancelled which will return the user back to the game directory page.
+
+#### Delete game
+
+The game details page will have a button for the user to delete the game.
+This can only be accesed by the user who added the game or the site administrator.
+A pop up will appear for confirmation, alternitavly this can be cancelled which will redirect the user back to the game details page.
+
+#### Genre manager
+
+The site administrator will have acces to the 'Manage Genres' link in the navbar.
+This will allow the the administrator to add a new genre or edit/delete existing genres.
+A popup window will appear if a genre is to be deleted allowing the administrator to cancel the deletion.
+
+#### Footer
+
+The footer will provide links to the original playstation on Youtube, Facebook, and Twitter.
+These will open in a new window.
 
 ## Future ideas
 
-Music and sound effects. These were implemented during the games production, but were later removed due to loading issues.
-I could not determine where in the main js file to place an event listener to check if they were loaded and start the game, and intend to return to this in the future.
+Reviews and rating. Users should be able to provide reviews and give the game a score.
+This would allow for a 'Top Rated' section on the homepage. 
 
-A Store front. At the end of the game the user could be directed via a link to the developer's store front where other games could be downloaded.
+The administrator should have the ability to ban/block offensive users.
 
-A pause button. Currently there is no pause button in the game which is something that sould be implemented in the future.
 
 ## Technologies used
 
-This site is constructed primarily in HTML with HTML Canvas, CSS and Javascript. 
+### Programming languages
 
-Font Awesome 4.7 is used to provide the icons for the player controls and game buttons.
-https://fontawesome.com/v4.7.0/
+This site is constructed primarily in HTML5, CSS3, Javasript and Python
 
-Google fonts is used to provide the Goldman font that is present across the site.
-https://fonts.google.com/
 
-Gitpod was used to write the HTML, Javascript and CSS files
+### Other Technologies
 
-Github Pages was used to deploy the live site.
+#### MongoDB
+MongoDb hosts the database which is used by this website.
+
+#### Flask/Pymongo
+Assists python in manipulating the MongoDB database.
+
+#### Werkzeug
+Allows password hashing and secures user authentication.
+
+#### Font Awesome
+Font Awesome 5.15 is used to provide the icons across the site.
+
+#### Materialize CSS
+Materialize CSS is used to assist in the sites layout and styling.
+
+#### Jquery 
+Jquery works alongside Materialize to provide extra functionality of Materialize components.
+
+#### Paint.net 
+Paint.net was used to create wireframes.
+
+#### https://techsini.com/multi-mockup/
+Used to create mockups.
+
+#### Gitpod/Github
+Gitpod used to write code and pushed to github for version control.
+
+##### Heroku
+The live site is deployed at heroku.com
+
+## Deployment
+
+Before any code is pushed to Github, env.py is created along with a pycache directory to store sensitive data.
+These are added to the git ignore file previous to development and testing so as they will not be pushed to github.
+The env.py file stores valuble user data such as the IP, PORT, SECRET_KEY, MONGO_URI and MONGO_DBName.
+In the terminal requirements.txt and Procfile were created using the commands below:
+   
+   - $ pip3 freeze --local > requirements.txt
+
+   - $ echo web: python app.py > Procfile
+
+These files are required by heroku.
+
+An account is registered on heroku.com (or an existing one is used).
+
+From the heroku dashboard, select 'new', followed by 'create new app'.
+Here the app name and region are determined.
+The app name must be all lowercase and spaces must be replaced with '-'.
+
+Back on the heroku dashboard select 'deploy' tab. 
+From here, the github method can be used to automatically deploy every time code is pushed to github.
+Select 'Connect to Github'.
+
+Make sure the github profile is displayed and click 'search'.
+When the reepository is shown below click 'connect' to connect to the app.
+
+Navigate to the Settings tab on Heroku, scroll to the 'Config Vars' section, and click 'Reveal Config Vars'. 
+
+Enter the variables (key and value) contained in the env.py file.
+- IP
+- PORT
+- SECRET_KEY
+- MONGO_URI
+- MONGO_DBNAME
+
+Back in gitpod push the requirements.txt and Procfile to the Github repository.
+
+In Heroku navigate to the 'Deploy' tab.
+In the Automatic deployment section, click 'Enable Automatic Deploys'. Then under Manual deploy click 'Deploy Branch'.
+
+Heroku will now use the code from GitHub and start building the app.
+This will take a few minutes, when it is complete it wildisplay the message:
+'Your app was successfully deployed'
+
+Clicking on 'view' will launch the new apllication.
+
+
+     
+
+
+
+
+
+
 
 
 ## Testing and Deployment
