@@ -2,41 +2,43 @@
 {% block content %}
     
     <div class="form-background">
-        <div class="row card details-card">
+        <div class="card details-card">
             <h3 class="form-title center-align">{{ game.game_name }}</h3>
-            <div class="card-image col s12 m5">
-                {% if game.img_url %}
-                    <img src="{{ game.img_url }}">
-                {% else %}
-                    <img src="{{ url_for('static', filename='images/ps-logo.png') }}">
-                {% endif %}
+            <div class="row">
+                <div class="col s12 m5 card-image">
+                    {% if game.img_url %}
+                        <img src="{{ game.img_url }}">
+                    {% else %}
+                        <img src="{{ url_for('static', filename='images/ps-logo.png') }}">
+                    {% endif %}
+                </div>
+                <div class="col s12 m7">
+                    <p>
+                        <b>Genre:</b> {{ game.genre_name }}<br>
+                        <b>Released:</b> {{ game.year }}<br>
+                        <b>Developed by:</b> {{ game.developer }}<br>
+                        <b>Published by:</b> {{ game.publisher }}<br>
+                        <em><b>Added by:</b> {{ game.added_by}}</em>
+                    </p>
+                </div>
+                <div class="game-description col s12">
+                    {{ game.description}}
+                </div>
+                <div class="button-container">
+                    {% if session.user|lower == game.added_by|lower %}
+                        <div class="col s6 card-button">
+                            <a href="{{ url_for('edit_game', game_id=game._id ) }}" class="btn green accent-4">
+                                Edit
+                            </a>
+                        </div>
+                        <div class="col s6 card-button">
+                            <a href="{{ url_for('delete_game', game_id=game._id ) }}" class="btn red accent-4">
+                                Delete
+                            </a>
+                        </div>
+                    {% endif %}
+                </div>               
             </div>
-            <div class="card-content col s12 m7">
-                <p>
-                    <b>Genre:</b> {{ game.genre_name }}<br>
-                    <b>Released:</b> {{ game.year }}<br>
-                    <b>Developed by:</b> {{ game.developer }}<br>
-                    <b>Published by:</b> {{ game.publisher }}<br>
-                    <em><b>Added by:</b> {{ game.added_by}}</em>
-                </p>
-            </div>
-            <div class="game-description">
-                {{ game.description}}
-            </div>
-            <div class="row button-container">
-                 {% if session.user|lower == game.added_by|lower %}
-                                    <div class="col s6 card-button">
-                                        <a href="{{ url_for('edit_game', game_id=game._id ) }}" class="btn green accent-4">
-                                            Edit
-                                        </a>
-                                    </div>
-                                    <div class="col s6 card-button">
-                                        <a href="{{ url_for('delete_game', game_id=game._id ) }}" class="btn red accent-4">
-                                            Delete
-                                        </a>
-                                    </div>
-                                {% endif %}
-                            </div>               
         </div>
     </div>
 
