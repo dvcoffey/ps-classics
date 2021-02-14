@@ -209,9 +209,18 @@ footer{
 
 /*----genre.html----*/
 
+.genre-button-conatiner{
+    padding: 0% !important;
+}
+
 .add-genre-btn{
-    margin-top: 10%;
+    margin: 6%;
+    height: 64px;
     font-family: "Orbitron", sans-serif !important;
+}
+
+.edit-genre-btn{
+    margin: 6px;
 }
 
 /*----forms----*/
@@ -231,9 +240,35 @@ footer{
         padding: 8% 20%;
     }
 }
+
 .card-panel{
     margin-top: 4%;
     border-radius: 20px;
+}
+
+ul.dropdown-content.select-dropdown li span {
+    color: #000;
+}
+
+.datepicker-date-display {
+    background-image: linear-gradient(to right, blue , grey);
+}
+
+.datepicker-clear{
+    color: darkgray;
+}
+
+.datepicker-cancel{
+    color: red;
+}
+
+.datepicker-today, .datepicker-done, .datepicker-table td.is-today {
+    color: blue;
+}
+
+.datepicker-table td.is-selected {
+    background-color: blue;
+    color: #fff;
 }
 
 /*---game details.html---*/
