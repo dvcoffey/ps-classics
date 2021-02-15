@@ -71,7 +71,7 @@
             
             <!--retrieve list of genres--> 
             {% for genre in genres %}
-                <div class="col s6 m4 l3">
+                <div class="col s12 m6 l3">
                     <a href="{{ url_for('filter_genre', genre_name=genre.genre_name) }}">
                         <div class="card genre-thumbnail grey darken-4">
                             <div class="card-content white-text">

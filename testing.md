@@ -161,8 +161,73 @@ If username already exists, flash message user already exists
 #### login
 
 If user inputs incorrect username/password, flash message incorrect username/password
-success
+- success
 
+#### Homepage
+
+Most recent games show the most recently added games to the database
+- success
+
+Most viewed games show the most viewed games in the database
+- success
+
+Genre cards will filter the games shown by genre
+- success
+
+#### Game Directory
+
+Search bar returns results that match the query
+- success
+
+The reset button clears the search bar
+- success
+
+#### Profile
+
+The profile page only shows the games added by the profile owner
+- success
+
+#### Add Game
+
+The add game inputs the data to the correct game fields
+- success
+
+A null value or a broken image URL will display the default image "playstation logo" for the associated game
+- success
+
+The calender picker and dropdown selector are working correctly
+- success
+
+The added game will appear in the database correctly
+- success
+
+#### Edit Game
+
+The edited game inputs the data to the correct game fields
+- success
+
+A null value or a broken image URL will display the default image "playstation logo" for the associated game
+- success
+
+The calender picker and dropdown selector are working correctly
+- success
+
+The edited game will appear in the database correctly
+- success
+
+#### Delete Game
+
+A deleted game will be removed from the database
+- success
+
+#### Manage genres
+
+The add, edit and delete functionality if the genres are working correctly
+- success
+
+#### Navbar
+The navbar will display the appropriate links determined by the user (Visitor, Logged in or Administrator)
+- success
 
 
 
