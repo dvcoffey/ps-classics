@@ -47,7 +47,7 @@ main {
 }
 
 .text-shadow {
-    text-shadow: 2px, 2px, 2px rgba(0, 0, 0, 0.5);
+    text-shadow: 2px, 2px, 2px, rgba(0, 0, 0, 0.5);
 }
 
 .flashes h5 {
@@ -188,7 +188,6 @@ main {
 }
 
 .card-content{
-    padding: auto !important;
     font-family: "Montserrat", sans-serif;
 }
 
@@ -207,7 +206,7 @@ main {
 .card-button{
     display: flex;
     justify-content: center;
-    padding: 2px auto;
+    padding: 2px;
     line-height: 30px;
 }
 
