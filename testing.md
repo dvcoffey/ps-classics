@@ -283,7 +283,11 @@ Javascript was validated at https://beautifytools.com/javascript-validator.php w
 
 ### Python
 
-Python was validated at https://extendsclass.com/python-tester.html with no errors detected.
+Python was validated at https://extendsclass.com/python-tester.html with no errors in syntax detected.
+
+It was also tested for pep8 compliance using http://pep8online.com/ with the following error
+
+E125 	104 	5 	continuation line with same indent as next logical line 
 
 
 ### Further Testing
