@@ -32,9 +32,9 @@
                             <div class="card-image game-card-image">
                                 <!-- default image if url is missing or broken -->
                                 {% if game.img_url %}
-                                    <img src="{{ game.img_url }}" onerror="this.onerror=null; this.src='../static/images/ps-logo.png'">
+                                    <img src="{{ game.img_url }}" onerror="this.onerror=null; this.src='../static/images/ps-logo.png'" alt="game thumbnail image">
                                 {% else %}
-                                    <img src="{{ url_for('static', filename='images/ps-logo.png') }}">
+                                    <img src="{{ url_for('static', filename='images/ps-logo.png') }}" alt="game thumbnail image">
                                 {% endif %}
                             </div>
                             <h6 class="card-title game-card-title">{{ game.game_name }}</h6>

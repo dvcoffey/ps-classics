@@ -229,5 +229,27 @@ The add, edit and delete functionality if the genres are working correctly
 The navbar will display the appropriate links determined by the user (Visitor, Logged in or Administrator)
 - success
 
+## Responsiveness
+
+The grids on the homepage will display as follows
+- 4 for a large screen
+- 2 for a medium screen
+- 1 for a small screen
+
+The grids on the game directory page will display as follows
+- 3 for a large screen
+- 2 for a medium screen
+- 1 for a small screen
+
+This works well, I have yet to find a game title that causes overflow
+'Castlevania, Symphony of the Night' caused this issue early in development, and so the game cards were given more space to accomodate lengthier information.
+The Genre cards on the homepage were initially set to 2 per row across on small screens. This caused overflow and was later to 1 per row.
+
+The mobile sidenav is working correctly.
+
+The site will appear correctly down to a screen width of 300px
+
+
+
 
 
