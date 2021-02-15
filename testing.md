@@ -288,4 +288,12 @@ Python was validated at https://extendsclass.com/python-tester.html with no erro
 
 ### Further Testing
 
-A link to the site was provided to two other people who were able to use the site without any issues.
+The website was tested in, firefox, chrome and internet explorer, and appeared to function correctly in each browser.
+
+It was also tested in safari on an iphone 10 with no issues found
+
+### Lighthouse
+
+Chrome dev tools and lighthouse were used to provide the following report
+
+[View here.](testing/lighthouse.pdf)
