@@ -252,6 +252,7 @@ The site will appear correctly down to a screen width of 300px
 
 ## Validation
 
+
 ### HTML
 
 The html was validated here at https://validator.w3.org/ with one error
@@ -262,7 +263,25 @@ The html was validated here at https://validator.w3.org/ with one error
 
 This is caused by the jinja tmplates used across the site.
 
+
 ### CSS
 
+The CSS was validated here at https://jigsaw.w3.org/css-validator/ with one error
 
+    URI : https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css
+    13 	.table-of-contents a 	Value Error : letter-spacing only 0 can be a unit. You must put a unit after your number : 0.4 
+
+This appears to be an artefact cause by the MaterializeCSS library as it does not target my own CSS
+
+
+### Javascript
+
+Javascript was validated at https://beautifytools.com/javascript-validator.php with 2 errors
+
+    24	9	'let' is available in ES6 (use 'esversion: 6') or Mozilla JS extensions (use moz).
+    25	9	'let' is available in ES6 (use 'esversion: 6') or Mozilla JS extensions (use moz).
+
+### Python
+
+Python was validated at https://extendsclass.com/python-tester.html with no errors detected.
 
