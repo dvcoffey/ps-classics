@@ -250,6 +250,19 @@ The mobile sidenav is working correctly.
 The site will appear correctly down to a screen width of 300px
 
 
+## Validation
+
+### HTML
+
+The html was validated here at https://validator.w3.org/ with one error
+
+    Warning: Section lacks heading. Consider using h2-h6 elements to add identifying headings to all sections.
+
+    From line 50, column 5; to line 50, column 13
+
+This is caused by the jinja tmplates used across the site.
+
+### CSS
 
 
 
