@@ -52,23 +52,23 @@
                         <a class="btn col s12 red accent-4 modal-trigger" href="#delete-game-modal">
                             Delete
                         </a> 
-
-                        <!-- modal to delete game -->
-                        <div id="delete-game-modal" class="modal">
-                            <div class="modal-content">
-                                <h4 class="form-title">Are you sure?</h4>
-                                <p>This content cannot be restored once it has been deleted</p>
-                            </div>
-                            <div class="modal-footer">
-                                <a href="#!" class="btn grey edit-genre-btn darken-4 modal-close">
-                                    Cancel
-                                </a>
-                                <a href="{{ url_for('delete_game', game_id=game._id ) }}" class="btn red darken-4">
-                                    Delete
-                                </a>
-                            </div>
-                        </div>
                     {% endif %}
+
+                    <!-- modal to delete game -->
+                    <div id="delete-game-modal" class="modal">
+                        <div class="modal-content">
+                            <h4 class="form-title">Are you sure?</h4>
+                            <p>This content cannot be restored once it has been deleted</p>
+                        </div>
+                        <div class="modal-footer">
+                            <a href="#!" class="btn grey edit-genre-btn darken-4 modal-close">
+                                Cancel
+                            </a>
+                            <a href="{{ url_for('delete_game', game_id=game._id ) }}" class="btn red darken-4">
+                                Delete
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
             

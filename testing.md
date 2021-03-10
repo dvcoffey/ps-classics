@@ -289,6 +289,15 @@ It was also tested for pep8 compliance using http://pep8online.com/ with the fol
 
 E125 	104 	5 	continuation line with same indent as next logical line 
 
+### Bugs
+
+A bug existed on the site, whereby the user could not access the delete function to delete a game from the database.
+The reason for this is that the delete functionality was accessed through a confirmation modal. 
+As this modal was nested within the if statement to determine the user, it worked such that the user could delete the 
+entry if and only if the user was the admin and the entry was added by another user. 
+This was rectified by placing the confirmation modal outside of the if statement.
+
+
 
 ### Further Testing
 
